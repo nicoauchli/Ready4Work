@@ -8,7 +8,7 @@ import {Observable} from "rxjs";
 })
 export class EmployeeService {
 
-  private URI = "127.0.0.1:8080";
+  private URI = "http://localhost:3000";
 
   constructor(
     private http: HttpClient
