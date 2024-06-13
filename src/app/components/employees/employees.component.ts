@@ -10,6 +10,9 @@ import {EmployeeService} from "../../services/employee.service";
 import {IEmployeeDAO} from "../../models/IEmployeeDAO";
 import {JsonPipe} from "@angular/common";
 import {MatIcon} from "@angular/material/icon";
+import {MatDivider} from "@angular/material/divider";
+import {RouterLink} from "@angular/router";
+import {LoadingService} from "../../services/loading.service";
 
 @Component({
   selector: 'app-employees',
@@ -22,7 +25,9 @@ import {MatIcon} from "@angular/material/icon";
     MatListItem,
     MatIcon,
     MatListItemIcon,
-    MatListItemTitle
+    MatListItemTitle,
+    MatDivider,
+    RouterLink
   ],
   templateUrl: './employees.component.html',
   styleUrl: './employees.component.scss'
@@ -33,13 +38,13 @@ export class EmployeesComponent implements OnInit {
 
   constructor(
     private employeeService: EmployeeService,
+    private loadingService: LoadingService,
   ) { }
 
   ngOnInit() {
-    this.employeeService.getEmployees().subscribe((employees: IEmployeeDAO[]) => {
-      console.log(employees)
-      this.employees = employees
-    })
+      this.employeeService.getEmployees().subscribe((employees: IEmployeeDAO[]) => {
+        this.employees = employees
+      })
   }
 
 }
