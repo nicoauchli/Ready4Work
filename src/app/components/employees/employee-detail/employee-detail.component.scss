@@ -1,15 +1,33 @@
-.todo-list {
-  max-width: 80%;
-  margin: 1rem auto auto;
-}
-
 .todo-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.todo-item.todo {
+  background-color: green;
+}
+
+.todo-item.doing {
+  background-color: yellow;
+}
+
+.todo-item.waiting {
+  background-color: blue;
+}
+
+.todo-item.done {
+  background-color: red;
+}
+
+.todo-details {
+  flex: 1;
+  cursor: pointer;
 }
 
 mat-form-field {
-  width: 120px;
+  width: 110px;
 }

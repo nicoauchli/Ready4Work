@@ -3,12 +3,15 @@ import {EmployeeService} from "../../../services/employee.service";
 import {ActivatedRoute, RouterLink} from "@angular/router";
 import {IEmployeeDAO} from "../../../models/IEmployeeDAO";
 import {MatList, MatListItem} from "@angular/material/list";
-import {NgForOf} from "@angular/common";
+import {NgClass, NgForOf} from "@angular/common";
 import {MatFormField} from "@angular/material/form-field";
 import {MatOption, MatSelect} from "@angular/material/select";
 import {ITodoDAO} from "../../../models/ITodoDAO";
 import {TodoService} from "../../../services/todo.service";
 import {ITodoUpdateState} from "../../../models/ITodoUpdateState";
+import {MatDivider} from "@angular/material/divider";
+import {MatIcon} from "@angular/material/icon";
+import {MatIconButton} from "@angular/material/button";
 
 @Component({
   selector: 'app-employee-detail',
@@ -20,7 +23,11 @@ import {ITodoUpdateState} from "../../../models/ITodoUpdateState";
     MatFormField,
     MatSelect,
     MatOption,
-    RouterLink
+    RouterLink,
+    MatDivider,
+    MatIcon,
+    MatIconButton,
+    NgClass
   ],
   templateUrl: './employee-detail.component.html',
   styleUrl: './employee-detail.component.scss'
@@ -50,5 +57,9 @@ export class EmployeeDetailComponent implements OnInit {
     this.todoService.updateTodo(todo.id, newState).subscribe(updatedTodo => {
       todo.state = updatedTodo.state;
     });
+  }
+
+  public getTodoClass(todo: ITodoDAO): string {
+    return `todo-item ${todo.state}`
   }
 }
