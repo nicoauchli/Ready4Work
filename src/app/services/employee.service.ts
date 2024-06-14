@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {IEmployeeDAO} from "../models/IEmployeeDAO";
 import {Observable} from "rxjs";
+import {IEmployeeDTO} from "../models/IEmployeeDTO";
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +18,13 @@ export class EmployeeService {
 
   public getEmployees(): Observable<IEmployeeDAO[]> {
     return this.http.get<IEmployeeDAO[]>(this.URI + "/employees");
+  }
+
+  public getEmployeeById(id: number): Observable<IEmployeeDAO> {
+    return this.http.get<IEmployeeDAO>(this.URI + `/employees/${id}`);
+  }
+
+  public addNewEmployee(employee: IEmployeeDTO): Observable<IEmployeeDAO> {
+    return this.http.post<IEmployeeDAO>(this.URI + "/employees", employee);
   }
 }

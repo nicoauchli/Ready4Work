@@ -1,0 +1,15 @@
+.todo-list {
+  max-width: 80%;
+  margin: 1rem auto auto;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+mat-form-field {
+  width: 120px;
+}

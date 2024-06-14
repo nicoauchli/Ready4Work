@@ -1,0 +1,16 @@
+<div class="todo-list">
+  <mat-list>
+    <mat-list-item *ngFor="let todo of employee.todos">
+      <div class="todo-item">
+        <div class="todo-details">
+          <h4>{{ todo.title }}</h4>
+        </div>
+        <mat-form-field>
+          <mat-select [(value)]="todo.state" (selectionChange)="updateStatus(todo, $event.value)">
+            <mat-option *ngFor="let state of states" [value]="state">{{ state }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </mat-list-item>
+  </mat-list>
+</div>

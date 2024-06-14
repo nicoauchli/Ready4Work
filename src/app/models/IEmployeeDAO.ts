@@ -1,5 +1,7 @@
-export interface IEmployeeDAO {
+import {IEmployeeDTO} from "./IEmployeeDTO";
+import {ITodoDAO} from "./ITodoDAO";
+
+export interface IEmployeeDAO extends IEmployeeDTO{
   id: number,
-  firstname: string,
-  lastname: string
+  todos: ITodoDAO[]
 }
