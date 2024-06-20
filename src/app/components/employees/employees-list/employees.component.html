@@ -1,17 +1,17 @@
 <div class="container">
-  <mat-action-list>
-    <div class="employees-list-header">
-      <div mat-subheader>Mitarbeiter</div>
-      <span class="spacer"></span>
+  <div class="employees-list-header">
+    <h2>Mitarbeiter</h2>
+    <span class="spacer"></span>
       <button mat-icon-button
               matTooltip="neuer Mitarbeiter erfassen"
               matTooltipPosition="above"
               (click)="openDialogAddNewEmployee()">
         <mat-icon>add</mat-icon></button>
-    </div>
-    <mat-divider></mat-divider>
+  </div>
+  <mat-action-list>
+
     @for (employee of employees; track employee) {
-      <mat-list-item [routerLink]="['/employees-list/', employee.id]">
+      <mat-list-item [routerLink]="['/employees/', employee.id]">
         <mat-icon matListItemIcon>person</mat-icon>
         <div matListItemTitle>{{ employee.firstname + ' ' + employee.lastname}}</div>
       </mat-list-item>

@@ -15,6 +15,10 @@ export class TodoService {
     private http: HttpClient,
   ) { }
 
+  public getTodoById(id: number): Observable<ITodoDAO> {
+    return this.http.get<ITodoDAO>(this.URI + "/todos/" + `${id}`);
+  }
+
   public updateTodo(id: number, state: ITodoUpdateState): Observable<ITodoDAO> {
     return this.http.patch<ITodoDAO>(this.URI + "/todos/" + id + "/state", {state: state} );
   }

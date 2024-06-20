@@ -1,1 +1,18 @@
-<p>todo-detail works!</p>
+<div class="container">
+  <div>
+    <h2>{{ todo.title }}</h2>
+    <mat-divider></mat-divider>
+  </div>
+
+  @switch (todo.type) {
+    @case (TYPE.TEXT) {
+      <app-todo-detail-text></app-todo-detail-text>
+    }
+    @case (TYPE.MAIL) {
+      <app-todo-detail-mail></app-todo-detail-mail>
+    }
+    @case (TYPE.LINK) {
+      <app-todo-detail-link></app-todo-detail-link>
+    }
+  }
+</div>
