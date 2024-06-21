@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {ITodoDAO} from "../models/ITodoDAO";
-import {ITodoUpdateState} from "../models/ITodoUpdateState";
+import {IEmployeeTodoDAO} from "../models/IEmployeeTodoDAO";
+import {IEmployeeTodoDTO} from "../models/IEmployeeTodoDTO";
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,8 @@ export class TodoService {
     return this.http.get<ITodoDAO>(this.URI + "/todos/" + `${id}`);
   }
 
-  public updateTodo(id: number, state: ITodoUpdateState): Observable<ITodoDAO> {
-    return this.http.patch<ITodoDAO>(this.URI + "/todos/" + id + "/state", {state: state} );
+  public updateTodo(employeeTodo: IEmployeeTodoDAO, newState: string): Observable<IEmployeeTodoDAO> {
+    employeeTodo.state = newState;
+    return this.http.patch<IEmployeeTodoDAO>(this.URI + "/employee-to-todo/" + employeeTodo.id, employeeTodo );
   }
 }

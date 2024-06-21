@@ -6,19 +6,19 @@
 
   <div>
     <mat-list>
-      <mat-list-item *ngFor="let todo of employee.todos" [ngClass]="getTodoClass(todo)" class="todo-list-item">
+      <mat-list-item *ngFor="let employeeTodo of employee.todos" [ngClass]="getTodoClass(employeeTodo.state)" class="todo-list-item">
         <div class="todo-item">
           <div>
-            <h4>{{ todo.title }}</h4>
+            <h4>{{ employeeTodo.todo.title }}</h4>
           </div>
           <span class="spacer"></span>
           <div class="actions">
             <mat-form-field>
-              <mat-select [(value)]="todo.state" (selectionChange)="updateStatus(todo, $event.value)">
+              <mat-select [(value)]="employeeTodo.state" (selectionChange)="updateStatus(employeeTodo, $event.value)">
                 <mat-option *ngFor="let state of states" [value]="state">{{ state }}</mat-option>
               </mat-select>
             </mat-form-field>
-            <button mat-icon-button [routerLink]="['/employees', employee.id, 'todos', todo.id]">
+            <button mat-icon-button [routerLink]="['/employees', employee.id, 'todos', employeeTodo.todo.id]">
               <mat-icon >edit</mat-icon>
             </button>
           </div>

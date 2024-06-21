@@ -6,12 +6,11 @@ import {MatList, MatListItem} from "@angular/material/list";
 import {NgClass, NgForOf} from "@angular/common";
 import {MatFormField} from "@angular/material/form-field";
 import {MatOption, MatSelect} from "@angular/material/select";
-import {ITodoDAO} from "../../../models/ITodoDAO";
 import {TodoService} from "../../../services/todo.service";
-import {ITodoUpdateState} from "../../../models/ITodoUpdateState";
 import {MatDivider} from "@angular/material/divider";
 import {MatIcon} from "@angular/material/icon";
 import {MatIconButton} from "@angular/material/button";
+import {IEmployeeTodoDAO} from "../../../models/IEmployeeTodoDAO";
 
 @Component({
   selector: 'app-employee-detail',
@@ -47,19 +46,19 @@ export class EmployeeDetailComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.employeeId = params['id'];
-      this.employeeService.getEmployeeById(parseInt(this.employeeId)).subscribe((employee: IEmployeeDAO) => {
+      this.employeeService.getEmployeeWithTodosById(parseInt(this.employeeId)).subscribe((employee: IEmployeeDAO) => {
           this.employee = employee;
       })
     })
   }
 
-  public updateStatus(todo: ITodoDAO, newState: ITodoUpdateState): void {
-    this.todoService.updateTodo(todo.id, newState).subscribe(updatedTodo => {
-      todo.state = updatedTodo.state;
+  public updateStatus(employeeTodo: IEmployeeTodoDAO, newState: string): void {
+    this.todoService.updateTodo(employeeTodo, newState).subscribe(updatedTodo => {
+      employeeTodo.state = updatedTodo.state;
     });
   }
 
-  public getTodoClass(todo: ITodoDAO): string {
-    return `todo-item ${todo.state}`
+  public getTodoClass(state: string): string {
+    return `todo-item ${state}`
   }
 }

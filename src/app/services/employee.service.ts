@@ -20,8 +20,8 @@ export class EmployeeService {
     return this.http.get<IEmployeeDAO[]>(this.URI + "/employees");
   }
 
-  public getEmployeeById(id: number): Observable<IEmployeeDAO> {
-    return this.http.get<IEmployeeDAO>(this.URI + `/employees/${id}`);
+  public getEmployeeWithTodosById(id: number): Observable<IEmployeeDAO> {
+    return this.http.get<IEmployeeDAO>(this.URI + `/employees/${id}/todos`);
   }
 
   public addNewEmployee(employee: IEmployeeDTO): Observable<IEmployeeDAO> {
