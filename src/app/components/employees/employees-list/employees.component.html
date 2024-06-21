@@ -3,11 +3,12 @@
     <h2>Mitarbeiter</h2>
     <span class="spacer"></span>
       <button mat-icon-button
-              matTooltip="neuer Mitarbeiter erfassen"
+              matTooltip="neues Todo erfassen"
               matTooltipPosition="above"
               (click)="openDialogAddNewEmployee()">
         <mat-icon>add</mat-icon></button>
   </div>
+  <mat-divider></mat-divider>
   <mat-action-list>
 
     @for (employee of employees; track employee) {

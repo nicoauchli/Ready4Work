@@ -53,7 +53,7 @@ export class EmployeeDetailComponent implements OnInit {
   }
 
   public updateStatus(employeeTodo: IEmployeeTodoDAO, newState: string): void {
-    this.todoService.updateTodo(employeeTodo, newState).subscribe(updatedTodo => {
+    this.todoService.updateTodoState(employeeTodo, newState).subscribe(updatedTodo => {
       employeeTodo.state = updatedTodo.state;
     });
   }

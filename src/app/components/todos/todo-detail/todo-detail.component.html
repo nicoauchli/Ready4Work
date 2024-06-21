@@ -1,18 +1,29 @@
 <div class="container">
   <div>
-    <h2>{{ todo.title }}</h2>
+    <h2>{{ employeeTodo.todo.title }}</h2>
     <mat-divider></mat-divider>
   </div>
 
-  @switch (todo.type) {
-    @case (TYPE.TEXT) {
-      <app-todo-detail-text></app-todo-detail-text>
+  <div class="description-area">
+    <form [formGroup]="descriptionform" class="description-form">
+      <mat-form-field class="description-field">
+        <textarea matInput placeholder="Bemerkung" formControlName="description"></textarea>
+      </mat-form-field>
+      <button mat-flat-button color="primary" (click)="saveDescription()">Speichern</button>
+    </form>
+  </div>
+
+  <div class="type-content">
+    @switch (employeeTodo.todo.type) {
+      @case (TYPE.TEXT) {
+        <app-todo-detail-text></app-todo-detail-text>
+      }
+      @case (TYPE.MAIL) {
+        <app-todo-detail-mail></app-todo-detail-mail>
+      }
+      @case (TYPE.LINK) {
+        <app-todo-detail-link></app-todo-detail-link>
+      }
     }
-    @case (TYPE.MAIL) {
-      <app-todo-detail-mail></app-todo-detail-mail>
-    }
-    @case (TYPE.LINK) {
-      <app-todo-detail-link></app-todo-detail-link>
-    }
-  }
+  </div>
 </div>
