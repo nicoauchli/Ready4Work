@@ -1,1 +1,4 @@
-<p>Display Mail</p>
+<div class="email-content">
+  <div [innerHTML]="sanitizedContent"></div>
+  <button mat-stroked-button color="primary" (click)="copyContent(emailContent[0])">In Zwischenablage kopieren</button>
+</div>

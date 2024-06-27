@@ -4,6 +4,10 @@
     <mat-divider></mat-divider>
   </div>
 
+  <div>
+    <span>Status: {{ employeeTodo.state }}</span>
+  </div>
+
   <div class="description-area">
     <form [formGroup]="descriptionform" class="description-form">
       <mat-form-field class="description-field">
@@ -19,7 +23,7 @@
         <app-todo-detail-text></app-todo-detail-text>
       }
       @case (TYPE.MAIL) {
-        <app-todo-detail-mail></app-todo-detail-mail>
+        <app-todo-detail-mail [emailContent]="employeeTodo.todo.content"></app-todo-detail-mail>
       }
       @case (TYPE.LINK) {
         <app-todo-detail-link></app-todo-detail-link>
