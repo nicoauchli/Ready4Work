@@ -20,13 +20,13 @@
   <div class="type-content">
     @switch (employeeTodo.todo.type) {
       @case (TYPE.TEXT) {
-        <app-todo-detail-text></app-todo-detail-text>
+        <app-todo-detail-text [textContent]="employeeTodo.todo.content"></app-todo-detail-text>
       }
       @case (TYPE.MAIL) {
         <app-todo-detail-mail [emailContent]="employeeTodo.todo.content"></app-todo-detail-mail>
       }
       @case (TYPE.LINK) {
-        <app-todo-detail-link></app-todo-detail-link>
+        <app-todo-detail-link [linkContent]="employeeTodo.todo.content"></app-todo-detail-link>
       }
     }
   </div>

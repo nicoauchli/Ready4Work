@@ -3,12 +3,14 @@ import {EmployeesComponent} from "./components/employees/employees-list/employee
 import {EmployeeDetailComponent} from "./components/employees/employee-detail/employee-detail.component";
 import {TodoDetailComponent} from "./components/todos/todo-detail/todo-detail.component";
 import {ChecklistListComponent} from "./components/checklist/checklist-list/checklist-list.component";
+import {ChecklistDetailComponent} from "./components/checklist/checklist-detail/checklist-detail.component";
 
 export const routes: Routes = [
   { path: 'checklist', component: ChecklistListComponent},
+  { path: 'checklist/:id', component: ChecklistDetailComponent },
   { path: 'employees', component: EmployeesComponent},
   { path: 'employees/:id', component: EmployeeDetailComponent},
-  { path: 'employees/:id/todos/:todoId', component: TodoDetailComponent }, // Define the route with parameters
+  { path: 'employees/:id/todos/:todoId', component: TodoDetailComponent },
   { path: '', redirectTo: '', pathMatch: 'full' },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];

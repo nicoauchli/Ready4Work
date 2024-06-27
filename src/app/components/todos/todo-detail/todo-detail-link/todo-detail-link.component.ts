@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-todo-detail-link',
@@ -8,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './todo-detail-link.component.scss'
 })
 export class TodoDetailLinkComponent {
+
+  @Input()
+  linkContent!: string[]
+
 
 }

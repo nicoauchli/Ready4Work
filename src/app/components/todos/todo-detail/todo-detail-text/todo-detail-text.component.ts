@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-todo-detail-text',
@@ -8,5 +8,8 @@ import { Component } from '@angular/core';
   styleUrl: './todo-detail-text.component.scss'
 })
 export class TodoDetailTextComponent {
+
+  @Input()
+  textContent!: string[]
 
 }

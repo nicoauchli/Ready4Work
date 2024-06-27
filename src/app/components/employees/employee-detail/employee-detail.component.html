@@ -18,7 +18,7 @@
                 <mat-option *ngFor="let state of states" [value]="state">{{ state }}</mat-option>
               </mat-select>
             </mat-form-field>
-            <button mat-icon-button [routerLink]="['/employees', employee.id, 'todos', employeeTodo.todo.id]">
+            <button mat-icon-button [routerLink]="['/employees', employee.id, 'todos', employeeTodo.id]">
               <mat-icon >edit</mat-icon>
             </button>
           </div>

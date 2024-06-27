@@ -3,12 +3,22 @@
     <h2>Checkliste</h2>
     <span class="spacer"></span>
     <button mat-icon-button
-            matTooltip="neuer Mitarbeiter erfassen"
+            matTooltip="neues standard Todo erfassen"
             matTooltipPosition="above"
     >
       <mat-icon>add</mat-icon>
     </button>
   </div>
   <mat-divider></mat-divider>
+
+  <mat-action-list>
+
+    @for (todo of todos; track todo) {
+      <mat-list-item [routerLink]="['/checklist/', todo.id]">
+        <mat-icon matListItemIcon>article</mat-icon>
+        <div matListItemTitle>{{ todo.title }}</div>
+      </mat-list-item>
+    }
+  </mat-action-list>
 
 </div>
