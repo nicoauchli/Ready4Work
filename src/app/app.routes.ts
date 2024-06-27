@@ -7,7 +7,7 @@ import {ChecklistDetailComponent} from "./components/checklist/checklist-detail/
 
 export const routes: Routes = [
   { path: 'checklist', component: ChecklistListComponent},
-  { path: 'checklist/:id', component: ChecklistDetailComponent },
+  { path: 'checklist/:todoId', component: ChecklistDetailComponent },
   { path: 'employees', component: EmployeesComponent},
   { path: 'employees/:id', component: EmployeeDetailComponent},
   { path: 'employees/:id/todos/:todoId', component: TodoDetailComponent },

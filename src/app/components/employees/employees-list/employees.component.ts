@@ -12,7 +12,6 @@ import {JsonPipe} from "@angular/common";
 import {MatIcon} from "@angular/material/icon";
 import {MatDivider} from "@angular/material/divider";
 import {RouterLink} from "@angular/router";
-import {LoadingService} from "../../../services/loading.service";
 import {MatIconButton} from "@angular/material/button";
 import {MatTooltip} from "@angular/material/tooltip";
 import {MatDialog} from "@angular/material/dialog";
@@ -45,7 +44,6 @@ export class EmployeesComponent implements OnInit {
 
   constructor(
     private employeeService: EmployeeService,
-    private loadingService: LoadingService,
   ) { }
 
   ngOnInit() {

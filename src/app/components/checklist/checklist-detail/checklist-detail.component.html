@@ -1,3 +1,29 @@
 <div class="container">
+  <div class="checklist-detail-header">
+    <h2>{{ todo.title }}</h2>
+    <span class="spacer"></span>
+    <button mat-icon-button
+            matTooltip="Todo bearbeiten"
+            matTooltipPosition="above"
+            (click)="changeMode()"
+    >
+      <mat-icon>edit</mat-icon>
+    </button>
+  </div>
+  <mat-divider></mat-divider>
 
+  @if (mode === Mode.VIEW) {
+    <div>
+      <p>{{ todo.id }}</p>
+      <p>{{ todo.type }}</p>
+      <p>{{ todo.content }}</p>
+      <p>{{ todo.isDefault }}</p>
+    </div>
+  }
+
+  @if (mode === Mode.EDIT) {
+    <div>
+
+    </div>
+  }
 </div>
