@@ -1,29 +1,67 @@
 <div class="container">
-  <div class="checklist-detail-header">
-    <h2>{{ todo.title }}</h2>
-    <span class="spacer"></span>
-    <button mat-icon-button
-            matTooltip="Todo bearbeiten"
-            matTooltipPosition="above"
-            (click)="changeMode()"
-    >
-      <mat-icon>edit</mat-icon>
-    </button>
-  </div>
-  <mat-divider></mat-divider>
-
-  @if (mode === Mode.VIEW) {
-    <div>
-      <p>{{ todo.id }}</p>
-      <p>{{ todo.type }}</p>
-      <p>{{ todo.content }}</p>
-      <p>{{ todo.isDefault }}</p>
+  @if (todo) {
+    <div class="checklist-detail-header">
+      <h2>{{ todo.title }}</h2>
+      <span class="spacer"></span>
+      <button mat-icon-button
+              matTooltip="Todo bearbeiten"
+              matTooltipPosition="above"
+              (click)="changeMode()"
+      >
+        <mat-icon>edit</mat-icon>
+      </button>
     </div>
-  }
+    <mat-divider></mat-divider>
+    @if (mode === Mode.VIEW) {
+      <div>
+        <p>{{ todo.id }}</p>
+        <p>{{ todo.type }}</p>
+        <p>{{ todo.content }}</p>
+        <p>{{ todo.isDefault }}</p>
+      </div>
+    }
 
-  @if (mode === Mode.EDIT) {
-    <div>
+    @if (mode === Mode.EDIT) {
+      <div>
+        <form [formGroup]="editTodoFormGroup">
+          <mat-form-field>
+            <mat-select [(value)]="todo.type">
+              <mat-option *ngFor="let type of types" [value]="type" (onSelectionChange)="changeTypeForEdit()">{{ type }}</mat-option>
+            </mat-select>
+          </mat-form-field>
 
-    </div>
+          <ng-container>
+            @switch (todo.type) {
+              @case (TYPE.TEXT) {
+                <mat-form-field class="content-field">
+                  <textarea matInput placeholder="Inhalt" formControlName="content"></textarea>
+                </mat-form-field>
+              }
+              @case (TYPE.MAIL) {
+                <mat-form-field class="content-field">
+                  <textarea matInput placeholder="Inhalt" formControlName="content"></textarea>
+                </mat-form-field>
+              }
+              @case (TYPE.LINK) {
+                <mat-form-field>
+                  <input matInput placeholder="Link hinzufügen" formControlName="content">
+                </mat-form-field>
+                <button mat-raised-button (click)="addToTodoContent()">hinzufügen</button>
+                <ul>
+                  <li *ngFor="let link of todo.content; let i = index">
+                    {{ link }}
+                    <button mat-icon-button (click)="removeLink(i)">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </li>
+                </ul>
+              }
+            }
+          </ng-container>
+
+        </form>
+        <button mat-raised-button color="warn" (click)="saveUpdatedTodo()">speichern</button>
+      </div>
+    }
   }
 </div>

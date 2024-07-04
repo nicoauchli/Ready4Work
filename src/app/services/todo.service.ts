@@ -30,7 +30,7 @@ export class TodoService {
   }
   // Get all default Todos
   public getAllDefaultTodos(): Observable<ITodoDAO[]> {
-    return this.http.get<ITodoDAO[]>(this.URI + "/todos");
+    return this.http.get<ITodoDAO[]>(this.URI + "/todos/default");
   }
   // Get todo by id
   public getTodoById(todoId: number): Observable<ITodoDAO> {
