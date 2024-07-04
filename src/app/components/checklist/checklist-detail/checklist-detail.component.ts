@@ -111,4 +111,8 @@ export class ChecklistDetailComponent implements OnInit {
       this.todo.content.splice(index, 1);
     }
   }
+
+  public deleteTodo() {
+    this.todoService.deleteTodoById(this.todoId).subscribe();
+  }
 }

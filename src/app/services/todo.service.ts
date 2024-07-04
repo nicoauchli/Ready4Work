@@ -36,4 +36,7 @@ export class TodoService {
   public getTodoById(todoId: number): Observable<ITodoDAO> {
     return this.http.get<ITodoDAO>(this.URI + "/todos/" + todoId);
   }
+  public deleteTodoById(id: number): Observable<any> {
+    return this.http.delete(this.URI + "/todos/" + id);
+  }
 }
