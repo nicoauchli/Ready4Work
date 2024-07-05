@@ -9,15 +9,16 @@ import {TodoDetailMailComponent} from "../../todos/todo-detail/todo-detail-mail/
 import {TodoDetailTextComponent} from "../../todos/todo-detail/todo-detail-text/todo-detail-text.component";
 import {TodoService} from "../../../services/todo.service";
 import {ITodoDAO} from "../../../models/ITodoDAO";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Mode} from "../../../enums/mode";
 import {MatIcon} from "@angular/material/icon";
 import {MatTooltip} from "@angular/material/tooltip";
-import {MatCard, MatCardContent, MatCardHeader} from "@angular/material/card";
+import {MatCard, MatCardContent, MatCardHeader, MatCardTitle} from "@angular/material/card";
 import {MatOption} from "@angular/material/autocomplete";
 import {MatSelect} from "@angular/material/select";
 import {NgForOf} from "@angular/common";
 import {TYPE} from "../../../enums/Type";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-checklist-detail',
@@ -40,7 +41,8 @@ import {TYPE} from "../../../enums/Type";
     MatLabel,
     MatOption,
     MatSelect,
-    NgForOf
+    NgForOf,
+    MatCardTitle
   ],
   templateUrl: './checklist-detail.component.html',
   styleUrl: './checklist-detail.component.scss'
@@ -60,6 +62,8 @@ export class ChecklistDetailComponent implements OnInit {
     private todoService: TodoService,
     private route: ActivatedRoute,
     private fb: FormBuilder,
+    private router: Router,
+    private _snackBar: MatSnackBar,
   ) {
     this.editTodoFormGroup = this.fb.group({
       type: new FormControl("", [Validators.required]),
@@ -113,6 +117,10 @@ export class ChecklistDetailComponent implements OnInit {
   }
 
   public deleteTodo() {
-    this.todoService.deleteTodoById(this.todoId).subscribe();
+    this.todoService.deleteTodoById(this.todoId).subscribe( () => {
+      this.router.navigateByUrl("/checklist");
+      this._snackBar.open("Todo gelöscht", "", {duration: 2000});
+    });
+
   }
 }
