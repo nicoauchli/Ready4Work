@@ -1,8 +1,15 @@
 <div class="container">
-  <div>
+  <div class="employee-detail-header">
     <h2>{{ employee.firstname + ' ' + employee.lastname }}</h2>
-    <mat-divider></mat-divider>
+    <span class="spacer"></span>
+    <button mat-icon-button matTooltip="Mitarbeiter bearbeiten" matTooltipPosition="above">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="Mitarbeiter löschen" matTooltipPosition="above" (click)="deleteEmployee()" color="warn">
+      <mat-icon>delete</mat-icon>
+    </button>
   </div>
+  <mat-divider></mat-divider>
 
   <div>
     <mat-list>

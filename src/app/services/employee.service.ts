@@ -27,4 +27,8 @@ export class EmployeeService {
   public addNewEmployee(employee: IEmployeeDTO): Observable<IEmployeeDAO> {
     return this.http.post<IEmployeeDAO>(this.URI + "/employees", employee);
   }
+
+  public deleteEmployeeById(employeeId: number): Observable<any> {
+    return this.http.delete<any>(this.URI + "/employees/" + employeeId);
+  }
 }
