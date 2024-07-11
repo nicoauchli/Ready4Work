@@ -13,8 +13,8 @@
 
   <mat-action-list>
 
-    @for (todo of todos; track todo) {
-      <mat-list-item [routerLink]="['/checklist/', todo.id]">
+    @for (todo of todos; track todo; let i = $index) {
+      <mat-list-item [routerLink]="['/checklist/', todo.id]" [ngClass]="{'odd-row': i % 2 === 0, 'even-row': i % 2 !== 0}">
         <mat-icon matListItemIcon>article</mat-icon>
         <div matListItemTitle>{{ todo.title }}</div>
       </mat-list-item>

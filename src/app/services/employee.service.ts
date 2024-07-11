@@ -15,7 +15,6 @@ export class EmployeeService {
     private http: HttpClient
   ) { }
 
-
   public getEmployees(): Observable<IEmployeeDAO[]> {
     return this.http.get<IEmployeeDAO[]>(this.URI + "/employees");
   }
@@ -26,6 +25,10 @@ export class EmployeeService {
 
   public addNewEmployee(employee: IEmployeeDTO): Observable<IEmployeeDAO> {
     return this.http.post<IEmployeeDAO>(this.URI + "/employees", employee);
+  }
+
+  public updateEmployee(employee: IEmployeeDAO): Observable<IEmployeeDAO> {
+    return this.http.patch<IEmployeeDAO>(this.URI + "/employees/" + employee.id, employee);
   }
 
   public deleteEmployeeById(employeeId: number): Observable<any> {

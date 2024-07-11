@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {EmployeeService} from "../../../services/employee.service";
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {IEmployeeDAO} from "../../../models/IEmployeeDAO";
@@ -13,6 +13,11 @@ import {MatIconButton} from "@angular/material/button";
 import {IEmployeeTodoDAO} from "../../../models/IEmployeeTodoDAO";
 import {MatTooltip} from "@angular/material/tooltip";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {
+  DialogAddNewEmployeeComponent
+} from "../employees-list/dialog-add-new-employee/dialog-add-new-employee.component";
+import {MatDialog} from "@angular/material/dialog";
+import {DialogEditEmployeeComponent} from "./dialog-edit-employee/dialog-edit-employee.component";
 
 @Component({
   selector: 'app-employee-detail',
@@ -39,6 +44,8 @@ export class EmployeeDetailComponent implements OnInit {
   private employeeId!: number;
   public employee!: IEmployeeDAO;
   public states = ['todo', 'doing', 'waiting', 'done'];
+  readonly dialogEditEmployee = inject(MatDialog);
+
 
   constructor(
     private employeeService: EmployeeService,
@@ -71,6 +78,15 @@ export class EmployeeDetailComponent implements OnInit {
     this.employeeService.deleteEmployeeById(this.employeeId).subscribe((value) => {
       this.router.navigateByUrl("/employees");
       this._snackBar.open("Mitarbeiter gelöscht", "", {duration: 2000});
+    });
+  }
+
+  public openDialogEditEmployee() {
+    const dialogRef = this.dialogEditEmployee.open(DialogEditEmployeeComponent, {
+      data: { employee: this.employee }
+    });
+    dialogRef.componentInstance.employeeEdited.subscribe((employee ) => {
+      this.employee = employee
     });
   }
 }

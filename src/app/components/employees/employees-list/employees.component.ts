@@ -8,7 +8,7 @@ import {
 } from "@angular/material/list";
 import {EmployeeService} from "../../../services/employee.service";
 import {IEmployeeDAO} from "../../../models/IEmployeeDAO";
-import {JsonPipe} from "@angular/common";
+import {JsonPipe, NgClass} from "@angular/common";
 import {MatIcon} from "@angular/material/icon";
 import {MatDivider} from "@angular/material/divider";
 import {RouterLink} from "@angular/router";
@@ -32,7 +32,8 @@ import {DialogAddNewEmployeeComponent} from "./dialog-add-new-employee/dialog-ad
     MatDivider,
     RouterLink,
     MatIconButton,
-    MatTooltip
+    MatTooltip,
+    NgClass
   ],
   templateUrl: './employees.component.html',
   styleUrl: './employees.component.scss'

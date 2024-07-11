@@ -7,6 +7,7 @@ import {MatActionList, MatListItem, MatListItemIcon, MatListItemTitle} from "@an
 import {RouterLink} from "@angular/router";
 import {ITodoDAO} from "../../../models/ITodoDAO";
 import {TodoService} from "../../../services/todo.service";
+import {NgClass} from "@angular/common";
 
 @Component({
   selector: 'app-checklist-list',
@@ -20,7 +21,8 @@ import {TodoService} from "../../../services/todo.service";
     MatListItem,
     MatListItemIcon,
     MatListItemTitle,
-    RouterLink
+    RouterLink,
+    NgClass
   ],
   templateUrl: './checklist-list.component.html',
   styleUrl: './checklist-list.component.scss'

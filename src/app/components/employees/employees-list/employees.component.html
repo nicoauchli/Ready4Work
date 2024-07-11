@@ -3,7 +3,7 @@
     <h2>Mitarbeiter</h2>
     <span class="spacer"></span>
       <button mat-icon-button
-              matTooltip="neues Todo erfassen"
+              matTooltip="neuen Mitarbeiter erfassen"
               matTooltipPosition="above"
               (click)="openDialogAddNewEmployee()">
         <mat-icon>add</mat-icon></button>
@@ -11,8 +11,8 @@
   <mat-divider></mat-divider>
   <mat-action-list>
 
-    @for (employee of employees; track employee) {
-      <mat-list-item [routerLink]="['/employees/', employee.id]">
+    @for (employee of employees; track employee; let i = $index) {
+      <mat-list-item [routerLink]="['/employees/', employee.id]" [ngClass]="{'odd-row': i % 2 === 0, 'even-row': i % 2 !== 0}">
         <mat-icon matListItemIcon>person</mat-icon>
         <div matListItemTitle>{{ employee.firstname + ' ' + employee.lastname}}</div>
       </mat-list-item>

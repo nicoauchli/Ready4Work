@@ -5,7 +5,7 @@
     <button mat-icon-button matTooltip="Todo für Mitarbeiter erstellen" matTooltipPosition="above">
       <mat-icon>add</mat-icon>
     </button>
-    <button mat-icon-button matTooltip="Mitarbeiter bearbeiten" matTooltipPosition="above">
+    <button mat-icon-button matTooltip="Mitarbeiter bearbeiten" (click)="openDialogEditEmployee()" matTooltipPosition="above">
       <mat-icon>edit</mat-icon>
     </button>
     <button mat-icon-button matTooltip="Mitarbeiter löschen" matTooltipPosition="above" (click)="deleteEmployee()" color="warn">
