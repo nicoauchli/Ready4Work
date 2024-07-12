@@ -59,7 +59,7 @@ export class TodoDetailComponent implements OnInit{
     private snackBar: MatSnackBar,
   ) {
     this.descriptionform = this.fb.group({
-      description: ['']
+      description: []
     })
   }
 
@@ -68,6 +68,7 @@ export class TodoDetailComponent implements OnInit{
       this.todoId = parseInt(params['todoId']);
       this.todoService.getEmployeeTodoById(this.todoId).subscribe( (employeeTodo: IEmployeeTodoDAO) => {
         this.employeeTodo = employeeTodo;
+        this.descriptionform.controls['description'].setValue(this.employeeTodo.description);
       });
     })
   }

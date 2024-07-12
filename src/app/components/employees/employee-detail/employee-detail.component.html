@@ -1,16 +1,25 @@
+@if (employee) {
 <div class="container">
   <div class="employee-detail-header">
     <h2>{{ employee.firstname + ' ' + employee.lastname }}</h2>
     <span class="spacer"></span>
-    <button mat-icon-button matTooltip="Todo für Mitarbeiter erstellen" matTooltipPosition="above">
-      <mat-icon>add</mat-icon>
-    </button>
-    <button mat-icon-button matTooltip="Mitarbeiter bearbeiten" (click)="openDialogEditEmployee()" matTooltipPosition="above">
-      <mat-icon>edit</mat-icon>
-    </button>
-    <button mat-icon-button matTooltip="Mitarbeiter löschen" matTooltipPosition="above" (click)="deleteEmployee()" color="warn">
-      <mat-icon>delete</mat-icon>
-    </button>
+
+    <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item matTooltip="Todo für Mitarbeiter erstellen" matTooltipPosition="above">
+        <mat-icon>add</mat-icon>
+        <span>Todo</span>
+      </button>
+      <button mat-menu-item matTooltip="Mitarbeiter bearbeiten" (click)="openDialogEditEmployee()" matTooltipPosition="above">
+        <mat-icon>edit</mat-icon>
+        <span>Bearbeiten</span>
+      </button>
+      <button mat-menu-item matTooltip="Mitarbeiter löschen" matTooltipPosition="above" (click)="deleteEmployee()" color="warn">
+        <mat-icon>delete</mat-icon>
+        <span>Löschen</span>
+      </button>
+    </mat-menu>
+
   </div>
   <mat-divider></mat-divider>
 
@@ -29,7 +38,7 @@
               </mat-select>
             </mat-form-field>
             <button mat-icon-button [routerLink]="['/employees', employee.id, 'todos', employeeTodo.id]">
-              <mat-icon >edit</mat-icon>
+              <mat-icon>menu_open</mat-icon>
             </button>
           </div>
         </div>
@@ -37,3 +46,4 @@
     </mat-list>
   </div>
 </div>
+}

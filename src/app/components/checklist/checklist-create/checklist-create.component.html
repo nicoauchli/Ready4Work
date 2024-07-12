@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="checklist-create-header">
+    <h2>Checklist Todo erstellen</h2>
+    <span class="spacer"></span>
+  </div>
+  <mat-divider></mat-divider>
+
+  <form [formGroup]="createChecklistForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Titel:</mat-label>
+      <input matInput type="text" formControlName="title">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select formControlName="type">
+        <mat-option *ngFor="let type of types" [value]="type" (onSelectionChange)="clearContent()">{{ type }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    @switch (createChecklistForm.controls['type'].value) {
+      @case (TYPE.TEXT) {
+        <mat-form-field>
+          <textarea matInput formControlName="content"></textarea>
+        </mat-form-field>
+      }
+      @case (TYPE.MAIL) {
+        <mat-form-field>
+          <textarea matInput formControlName="content"></textarea>
+        </mat-form-field>
+      }
+      @case (TYPE.LINK) {
+        <div>
+          <mat-form-field>
+            <input matInput formControlName="content">
+          </mat-form-field>
+          <button mat-raised-button color="warn" (click)="addLinkToContent()">Link hinzufügen</button>
+        </div>
+      }
+    }
+
+  <button mat-raised-button color="primary" (click)="submitChecklistTodo()">Erstellen</button>
+  </form>
+</div>

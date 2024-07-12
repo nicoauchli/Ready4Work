@@ -9,7 +9,7 @@ import {MatOption, MatSelect} from "@angular/material/select";
 import {TodoService} from "../../../services/todo.service";
 import {MatDivider} from "@angular/material/divider";
 import {MatIcon} from "@angular/material/icon";
-import {MatIconButton} from "@angular/material/button";
+import {MatButton, MatIconButton} from "@angular/material/button";
 import {IEmployeeTodoDAO} from "../../../models/IEmployeeTodoDAO";
 import {MatTooltip} from "@angular/material/tooltip";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -18,24 +18,29 @@ import {
 } from "../employees-list/dialog-add-new-employee/dialog-add-new-employee.component";
 import {MatDialog} from "@angular/material/dialog";
 import {DialogEditEmployeeComponent} from "./dialog-edit-employee/dialog-edit-employee.component";
+import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
 
 @Component({
   selector: 'app-employee-detail',
   standalone: true,
-    imports: [
-        MatList,
-        MatListItem,
-        NgForOf,
-        MatFormField,
-        MatSelect,
-        MatOption,
-        RouterLink,
-        MatDivider,
-        MatIcon,
-        MatIconButton,
-        NgClass,
-        MatTooltip
-    ],
+  imports: [
+    MatList,
+    MatListItem,
+    NgForOf,
+    MatFormField,
+    MatSelect,
+    MatOption,
+    RouterLink,
+    MatDivider,
+    MatIcon,
+    MatIconButton,
+    NgClass,
+    MatTooltip,
+    MatButton,
+    MatMenuTrigger,
+    MatMenu,
+    MatMenuItem
+  ],
   templateUrl: './employee-detail.component.html',
   styleUrl: './employee-detail.component.scss'
 })
