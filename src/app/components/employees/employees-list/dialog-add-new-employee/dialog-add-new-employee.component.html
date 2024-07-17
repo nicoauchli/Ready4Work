@@ -1,18 +1,18 @@
-<div class="dialog">
-<h2>Neuen Mitarbeiter erfassen</h2>
+<div class="m-2 flex flex-col justify-center items-center">
+<p class="text-xl font-bold">Neuen Mitarbeiter erfassen</p>
   <mat-dialog-content>
-    <form [formGroup]="newEmployeeFormGroup">
-      <mat-form-field appearance="outline">
+    <form [formGroup]="newEmployeeFormGroup" class="w-full items-center flex flex-col">
+      <mat-form-field appearance="fill">
         <mat-label>Vorname:</mat-label>
         <input matInput type="text" formControlName="firstname">
       </mat-form-field>
 
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="fill">
         <mat-label>Nachname:</mat-label>
         <input matInput type="text" formControlName="lastname">
       </mat-form-field>
     </form>
-    <mat-dialog-actions class="actions">
+    <mat-dialog-actions class="flex flex-col items-center">
       <button mat-raised-button color="accent" (click)="onSubmit()">Speichern</button>
     </mat-dialog-actions>
   </mat-dialog-content>

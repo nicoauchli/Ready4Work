@@ -1,21 +1,3 @@
-.employee-detail-header {
-  display: flex;
-}
-
-
-.todo-list-item {
-  margin-bottom: 1rem;
-  margin-top: 1rem;
-}
-
-.todo-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  border-radius: 5px;
-}
-
 .todo-item.todo {
   background-color: green;
 }
@@ -30,13 +12,4 @@
 
 .todo-item.done {
   background-color: red;
-}
-
-.actions {
-  display: flex;
-  align-items: center;
-}
-
-.actions mat-form-field {
-  width: 110px;
 }

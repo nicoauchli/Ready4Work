@@ -12,6 +12,7 @@ import {MatSelect} from "@angular/material/select";
 import {NgForOf} from "@angular/common";
 import {ITodoDTO} from "../../../models/ITodoDTO";
 import {TYPE} from "../../../enums/Type";
+import {CdkTextareaAutosize} from "@angular/cdk/text-field";
 
 @Component({
   selector: 'app-checklist-create',
@@ -29,7 +30,8 @@ import {TYPE} from "../../../enums/Type";
     MatButton,
     MatOption,
     MatSelect,
-    NgForOf
+    NgForOf,
+    CdkTextareaAutosize
   ],
   templateUrl: './checklist-create.component.html',
   styleUrl: './checklist-create.component.scss'
@@ -46,7 +48,7 @@ export class ChecklistCreateComponent {
   ) {
     this.createChecklistForm = this.fb.group({
       title: new FormControl("", [Validators.required]),
-      type: new FormControl("", [Validators.required]),
+      type: new FormControl("text", [Validators.required]),
       content: new FormControl("", [Validators.required])
     });
   }

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TodoService} from "../../../services/todo.service";
 import {ActivatedRoute} from "@angular/router";
-import {JsonPipe, NgForOf} from "@angular/common";
+import {JsonPipe, NgClass, NgForOf} from "@angular/common";
 import {MatDivider} from "@angular/material/divider";
 import {MatFormField} from "@angular/material/form-field";
 import {MatIcon} from "@angular/material/icon";
@@ -41,7 +41,8 @@ import {MatSnackBar} from "@angular/material/snack-bar";
     MatCard,
     MatCardHeader,
     MatCardContent,
-    MatInput
+    MatInput,
+    NgClass
   ],
   templateUrl: './todo-detail.component.html',
   styleUrl: './todo-detail.component.scss'
@@ -90,4 +91,10 @@ export class TodoDetailComponent implements OnInit{
         }
       );
   }
+
+  public getTodoClass(state: string): string {
+    return `todo-state ${state}`
+  }
+
+
 }

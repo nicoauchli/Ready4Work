@@ -1,4 +1,3 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
@@ -8,6 +7,10 @@
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
 @include mat.core();
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 $custom-accent-palette: mat.define-palette((
   50: #388087,
@@ -42,44 +45,11 @@ $custom-accent-palette: mat.define-palette((
   )
 ));
 
-$custom-primary-palette: mat.define-palette((
-  50: #F6F6F2,
-  100: #F6F6F2,
-  200: #F6F6F2,
-  300: #F6F6F2,
-  400: #F6F6F2,
-  500: #F6F6F2,
-  600: #F6F6F2,
-  700: #F6F6F2,
-  800: #F6F6F2,
-  900: #F6F6F2,
-  A100: #F6F6F2,
-  A200: #F6F6F2,
-  A400: #F6F6F2,
-  A700: #F6F6F2,
-  contrast: (
-    50: #388087,
-    100: #388087,
-    200: #388087,
-    300: #388087,
-    400: #388087,
-    500: #388087,
-    600: #388087,
-    700: #388087,
-    800: #388087,
-    900: #388087,
-    A100: #388087,
-    A200: #388087,
-    A400: #388087,
-    A700: #388087,
-  )
-));
-
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$Ready4Work-primary: mat.define-palette($custom-primary-palette);
-$Ready4Work-accent: mat.define-palette($custom-accent-palette);
+$Ready4Work-primary: mat.define-palette(mat.$indigo-palette);
+$Ready4Work-accent: mat.define-palette(mat.$red-palette);
 
 // The warn palette is optional (defaults to red).
 $Ready4Work-warn: mat.define-palette(mat.$red-palette);

@@ -1,21 +1,15 @@
-.description-area {
-  margin-top: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.todo-state.todo {
+  color: green;
 }
 
-.description-form {
-  display: flex;
-  align-items: center;
-  width: 100%;
+.todo-state.doing {
+  color: yellow;
 }
 
-.description-field {
-  flex: 1;
-  margin-right: 1rem;
+.todo-state.waiting {
+  color: blue;
 }
 
-button {
-  white-space: nowrap;
+.todo-state.done {
+  color: red;
 }

@@ -1,7 +1,7 @@
 @if (employee) {
 <div class="container">
-  <div class="employee-detail-header">
-    <h2>{{ employee.firstname + ' ' + employee.lastname }}</h2>
+  <div class="flex flex-row items-center">
+    <p class="text-xl font-bold">{{ employee.firstname + ' ' + employee.lastname }}</p>
     <span class="spacer"></span>
 
     <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
@@ -14,25 +14,25 @@
         <mat-icon>edit</mat-icon>
         <span>Bearbeiten</span>
       </button>
-      <button mat-menu-item matTooltip="Mitarbeiter löschen" matTooltipPosition="above" (click)="deleteEmployee()" color="warn">
+      <button mat-menu-item matTooltip="Mitarbeiter löschen" matTooltipPosition="above" (click)="deleteEmployee()">
         <mat-icon>delete</mat-icon>
         <span>Löschen</span>
       </button>
     </mat-menu>
 
   </div>
-  <mat-divider></mat-divider>
+  <mat-divider class="py-1"></mat-divider>
 
   <div>
     <mat-list>
-      <mat-list-item *ngFor="let employeeTodo of employee.todos" [ngClass]="getTodoClass(employeeTodo.state)" class="todo-list-item">
-        <div class="todo-item">
+      <mat-list-item *ngFor="let employeeTodo of employee.todos" [ngClass]="getTodoClass(employeeTodo.state)" class="my-4" style="border-radius: 6px">
+        <div class="flex justify-between items-center w-full">
           <div>
-            <h4>{{ employeeTodo.todo.title }}</h4>
+            <p class="font-bold">{{ employeeTodo.todo.title }}</p>
           </div>
           <span class="spacer"></span>
-          <div class="actions">
-            <mat-form-field>
+          <div class="flex items-center">
+            <mat-form-field class="w-32">
               <mat-select [(value)]="employeeTodo.state" (selectionChange)="updateStatus(employeeTodo, $event.value)">
                 <mat-option *ngFor="let state of states" [value]="state">{{ state }}</mat-option>
               </mat-select>

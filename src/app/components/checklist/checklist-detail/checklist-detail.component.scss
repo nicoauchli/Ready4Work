@@ -1,3 +1,15 @@
-.checklist-detail-header {
-  display: flex;
+.todo-state.todo {
+  color: green;
+}
+
+.todo-state.doing {
+  color: yellow;
+}
+
+.todo-state.waiting {
+  color: blue;
+}
+
+.todo-state.done {
+  color: red;
 }
