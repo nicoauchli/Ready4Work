@@ -9,11 +9,11 @@
         <mat-icon>more_vert</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item matTooltip="Todo bearbeiten" matTooltipPosition="above" (click)=changeMode()>
+        <button mat-menu-item matTooltip="Todo bearbeiten" matTooltipPosition="above" [routerLink]="['/checklist/' + todoId + '/edit']">
           <mat-icon>edit</mat-icon>
           <span>Todo bearbeiten</span>
         </button>
-        <button mat-menu-item matTooltip="Todo löschen" matTooltipPosition="above">
+        <button mat-menu-item matTooltip="Todo löschen" matTooltipPosition="above" (click)="deleteTodo()">
           <mat-icon>delete</mat-icon>
           <span>Todo löschen</span>
         </button>
@@ -21,50 +21,5 @@
     </div>
     <mat-divider></mat-divider>
 
-    <!--    -->
-    @if (mode === Mode.VIEW) {
-      <form [formGroup]="checklistTodoFormgroup" class="flex flex-col">
-        <mat-form-field appearance="fill" class="w-full" >
-          <mat-label>Titel</mat-label>
-          <input matInput type="text" formControlName="title">
-        </mat-form-field>
-
-        <mat-form-field class="w-full">
-          <mat-select formControlName="type" placeholder="Typ">
-            <mat-option *ngFor="let type of types" [value]="type" type="text" (onSelectionChange)="clearContent()">{{ type }}</mat-option>
-          </mat-select>
-        </mat-form-field>
-
-        @switch (checklistTodoFormgroup.controls['type'].value) {
-          @case (TYPE.TEXT) {
-            <mat-form-field class="w-full">
-              <textarea matInput formControlName="content" cdkTextareaAutosize cdkAutosizeMinRows="20" cdkAutosizeMaxRows="100" placeholder="Inhalt"></textarea>
-            </mat-form-field>
-          }
-          @case (TYPE.MAIL) {
-            <mat-form-field class="w-full">
-              <textarea matInput formControlName="content" cdkTextareaAutosize cdkAutosizeMinRows="20" cdkAutosizeMaxRows="100" placeholder="Inhalt"></textarea>
-            </mat-form-field>
-          }
-          @case (TYPE.LINK) {
-            <div class="w-full flex justify-center items-center space-x-4">
-              <mat-form-field class="w-1/2">
-                <input matInput formControlName="content">
-              </mat-form-field>
-              <button mat-raised-button color="warn" (click)="addLinkToContent()">Link hinzufügen</button>
-              @for (link of linkContentArr; track link) {
-                <div>
-                  <a href="{{link}}">{{ link }}</a>
-                </div>
-              }
-            </div>
-          }
-        }
-
-      </form>
-    }
-
-    @if (mode === Mode.EDIT) {
-    }
-</div>
+  </div>
 }

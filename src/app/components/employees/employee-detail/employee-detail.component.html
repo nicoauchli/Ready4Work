@@ -6,7 +6,7 @@
 
     <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item matTooltip="Todo für Mitarbeiter erstellen" matTooltipPosition="above">
+      <button mat-menu-item matTooltip="Todo für Mitarbeiter erstellen" matTooltipPosition="above" [routerLink]="['/employees/' + employeeId + '/create']">
         <mat-icon>add</mat-icon>
         <span>Todo</span>
       </button>

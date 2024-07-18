@@ -6,12 +6,12 @@
     <mat-divider class="py-1"></mat-divider>
   </div>
 <!-- State -->
-  <div class="my-3 flex flex-col w-full items-center justify-center">
+  <div class="py-10 flex flex-col w-full items-center justify-center border-2">
     <p class="text-4xl font-bold">Status</p>
     <p class="text-4xl" [ngClass]="getTodoClass(employeeTodo.state)">{{ employeeTodo.state }}</p>
   </div>
 <!-- Description -->
-  <div class="my-8 items-center">
+  <div class="my-8 items-center border-b">
     <p class="text-xl font-bold pb-2">Kommentar</p>
     <form [formGroup]="descriptionform" class="w-full flex items-center">
       <mat-form-field class="flex-grow mr-4">

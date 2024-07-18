@@ -3,6 +3,8 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {IEmployeeTodoDAO} from "../models/IEmployeeTodoDAO";
 import {ITodoDAO} from "../models/ITodoDAO";
+import {ITodoDTO} from "../models/ITodoDTO";
+import {IEmployeeTodoDTO} from "../models/IEmployeeTodoDTO";
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +30,19 @@ export class TodoService {
     employeeTodo.description = newDescription;
     return this.http.patch<IEmployeeTodoDAO>(this.URI + "/employee-to-todo/" + employeeTodo.id, employeeTodo );
   }
+  // Update whole todo
+  public updateTodo(id: number, todo: ITodoDAO): Observable<ITodoDAO> {
+    return this.http.patch<ITodoDAO>(this.URI + "/todos/" + id, todo);
+  }
+  // Create new Todo
+  public createTodo(todo: ITodoDTO): Observable<ITodoDAO> {
+    return this.http.post<ITodoDAO>(this.URI + "/todos", todo);
+  }
+  // Create EmployeeTodo
+  public createEmployeeTodo(employeeTodo: IEmployeeTodoDTO): Observable<IEmployeeTodoDAO> {
+    return this.http.post<IEmployeeTodoDAO>(this.URI + "/employee-to-todo", employeeTodo);
+  }
+
   // Get all default Todos
   public getAllDefaultTodos(): Observable<ITodoDAO[]> {
     return this.http.get<ITodoDAO[]>(this.URI + "/todos/default");

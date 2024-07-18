@@ -1,1 +1,45 @@
-<p>todo-create works!</p>
+<div class="container">
+
+  <p class="text-xl font-bold mb-4">Mitarbeiter Todo erstellen</p>
+  <mat-divider class="py-4"></mat-divider>
+  <form [formGroup]="createEmployeeTodoForm" class="flex flex-col">
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Titel</mat-label>
+      <input matInput type="text" formControlName="title">
+    </mat-form-field>
+
+    <mat-form-field class="w-full">
+      <mat-select formControlName="type" placeholder="Typ">
+        <mat-option *ngFor="let type of types" [value]="type" type="text" (onSelectionChange)="clearContent()">{{ type }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    @switch (createEmployeeTodoForm.controls['type'].value) {
+      @case (TYPE.TEXT) {
+        <mat-form-field class="w-full">
+          <textarea matInput formControlName="content" cdkTextareaAutosize cdkAutosizeMinRows="20" cdkAutosizeMaxRows="100" placeholder="Inhalt"></textarea>
+        </mat-form-field>
+      }
+      @case (TYPE.MAIL) {
+        <mat-form-field class="w-full">
+          <textarea matInput formControlName="content" cdkTextareaAutosize cdkAutosizeMinRows="20" cdkAutosizeMaxRows="100" placeholder="Inhalt"></textarea>
+        </mat-form-field>
+      }
+      @case (TYPE.LINK) {
+        <div class="w-full flex justify-center items-center space-x-4">
+          <mat-form-field class="w-1/2">
+            <input matInput formControlName="content">
+          </mat-form-field>
+          <button mat-raised-button color="warn" (click)="addLinkToContent()">Link hinzufügen</button>
+          @for (link of linkContentArr; track link) {
+            <div>
+              <a href="{{link}}">{{ link }}</a>
+            </div>
+          }
+        </div>
+      }
+    }
+
+    <button mat-raised-button color="primary" (click)="submitEmployeeTodo()" [disabled]="!this.createEmployeeTodoForm.valid">Erstellen</button>
+  </form>
+</div>

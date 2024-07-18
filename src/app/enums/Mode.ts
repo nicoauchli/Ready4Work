@@ -1,4 +1,4 @@
-export enum Mode {
+export enum MODE {
   VIEW = 'VIEW',
   EDIT = 'EDIT'
 }

@@ -15,8 +15,8 @@ import {TodoDetailMailComponent} from "../../todos/todo-detail/todo-detail-mail/
 import {TodoDetailTextComponent} from "../../todos/todo-detail/todo-detail-text/todo-detail-text.component";
 import {TodoService} from "../../../services/todo.service";
 import {ITodoDAO} from "../../../models/ITodoDAO";
-import {ActivatedRoute, Router} from "@angular/router";
-import {Mode} from "../../../enums/mode";
+import {ActivatedRoute, Router, RouterLink} from "@angular/router";
+import {MODE} from "../../../enums/Mode";
 import {MatIcon} from "@angular/material/icon";
 import {MatTooltip} from "@angular/material/tooltip";
 import {MatCard, MatCardContent, MatCardHeader, MatCardTitle} from "@angular/material/card";
@@ -55,7 +55,8 @@ import {CdkTextareaAutosize} from "@angular/cdk/text-field";
     MatMenuItem,
     MatMenuTrigger,
     NgClass,
-    CdkTextareaAutosize
+    CdkTextareaAutosize,
+    RouterLink
   ],
   templateUrl: './checklist-detail.component.html',
   styleUrl: './checklist-detail.component.scss'
@@ -64,14 +65,12 @@ export class ChecklistDetailComponent implements OnInit {
 
   public todo!: ITodoDAO;
   public todoId!: number;
-  public mode: Mode = Mode.VIEW;
-  protected readonly Mode = Mode;
+  public mode: MODE = MODE.VIEW;
+  protected readonly Mode = MODE;
   protected readonly TYPE = TYPE;
   public types = [TYPE.LINK,TYPE.MAIL,TYPE.TEXT]
   public checklistTodoFormgroup: FormGroup;
   public linkContentArr: string[] = [];
-
-
 
   constructor(
     private todoService: TodoService,
@@ -94,54 +93,14 @@ export class ChecklistDetailComponent implements OnInit {
         this.todo = todo;
         this.checklistTodoFormgroup.controls['title'].setValue(todo.title);
         this.checklistTodoFormgroup.controls['type'].setValue(todo.type);
-        if (this.todo.type !== TYPE.LINK) {
-          this.checklistTodoFormgroup.controls['content'].setValue(this.todo.content[0] || '');
+        if (this.todo.type === TYPE.LINK) {
+          this.linkContentArr = todo.content;
+        } else {
+          this.checklistTodoFormgroup.controls['content'].setValue(this.todo.content[0]);
         }
       });
     });
   }
-
-  public changeMode() {
-    this.mode = this.mode === Mode.VIEW ? Mode.EDIT : Mode.VIEW;
-  }
-
-  public addLinkToContent() {
-    this.linkContentArr.push(this.checklistTodoFormgroup.controls['content'].value);
-  }
-
-  public saveUpdatedTodo() {
-    if (this.todo.type !== TYPE.LINK) {
-      this.todo.content = [this.checklistTodoFormgroup.controls['content'].value];
-    }
-    console.log(this.todo);
-  }
-
-  // For type link to add multiple links
-  public addToTodoContent() {
-    if (this.todo.type === TYPE.LINK) {
-      const link = this.checklistTodoFormgroup.controls['content'].value;
-      if (!this.todo.content) {
-        this.todo.content = [];
-      }
-      this.todo.content.push(link);
-      this.checklistTodoFormgroup.controls['content'].setValue("");
-    }
-  }
-  // When changing the type of todo clean the content
-  public changeTypeForEdit() {
-    this.todo.content = [];
-    this.checklistTodoFormgroup.controls['content'].setValue("");
-  }
-  public removeLink(index: number) {
-    if (this.todo.type === TYPE.LINK) {
-      this.todo.content.splice(index, 1);
-    }
-  }
-
-  public clearContent() {
-    this.checklistTodoFormgroup.controls['content'].reset();
-  }
-
   public deleteTodo() {
     this.todoService.deleteTodoById(this.todoId).subscribe( () => {
       this.router.navigateByUrl("/checklist");

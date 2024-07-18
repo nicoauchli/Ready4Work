@@ -46,7 +46,7 @@ import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
 })
 export class EmployeeDetailComponent implements OnInit {
 
-  private employeeId!: number;
+  public employeeId!: number;
   public employee!: IEmployeeDAO;
   public states = ['todo', 'doing', 'waiting', 'done'];
   readonly dialogEditEmployee = inject(MatDialog);
