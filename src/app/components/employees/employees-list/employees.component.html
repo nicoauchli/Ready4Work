@@ -9,15 +9,14 @@
         <mat-icon>add</mat-icon></button>
   </div>
   <mat-divider></mat-divider>
-  <mat-action-list>
-
-    @for (employee of employees; track employee; let i = $index) {
-      <mat-list-item [routerLink]="['/employees/', employee.id]" [ngClass]="{'odd-row': i % 2 === 0, 'even-row': i % 2 !== 0}">
-        <mat-icon matListItemIcon>person</mat-icon>
-        <div matListItemTitle>{{ employee.firstname + ' ' + employee.lastname}}</div>
-      </mat-list-item>
-    }
-  </mat-action-list>
+    <mat-action-list>
+      @for (employee of employees; track employee; let i = $index) {
+        <mat-list-item [routerLink]="['/employees/', employee.id]" [ngClass]="{'odd-row': i % 2 === 0, 'even-row': i % 2 !== 0}">
+          <mat-icon matListItemIcon>person</mat-icon>
+          <div matListItemTitle>{{ employee.firstname + ' ' + employee.lastname}}</div>
+        </mat-list-item>
+      }
+    </mat-action-list>
 </div>
 
 

@@ -1,39 +1,43 @@
-@if(employeeTodo) {
-<div class="container">
-<!-- Header  -->
-  <div>
-    <p class="text-xl font-bold py-2">{{ employeeTodo.todo.title }}</p>
-    <mat-divider class="py-1"></mat-divider>
+@if (employeeTodo) {
+  <div class="container">
+    <!-- Header  -->
+    <div>
+      <p class="text-xl font-bold py-2">{{ employeeTodo.todo.title }}</p>
+      <mat-divider class="py-1"></mat-divider>
+    </div>
+    <!-- State -->
+    <div
+      class="py-10 flex flex-col w-full items-center justify-center border-2 border-neutral-700 rounded-2xl bg-slate-100">
+      <p class="text-4xl font-bold">Status</p>
+      <p class="text-4xl" [ngClass]="getTodoClass(employeeTodo.state)">{{ employeeTodo.state }}</p>
+    </div>
+    <!-- Description -->
+    <div class="border mt-4 rounded-2xl shadow-xl p-4">
+
+      <div class="my-8 items-center border-b">
+        <p class="text-xl font-bold pb-2">Kommentar</p>
+        <form [formGroup]="descriptionform" class="w-full flex items-center">
+          <mat-form-field class="flex-grow mr-4">
+            <textarea matInput placeholder="Bemerkung" formControlName="description"></textarea>
+          </mat-form-field>
+          <button mat-flat-button color="primary" (click)="saveDescription()">Speichern</button>
+        </form>
+      </div>
+      <!-- Content by type -->
+      <div class="w-full items-center">
+        <p class="text-xl font-bold pb-2">Inhalt</p>
+        @switch (employeeTodo.todo.type) {
+          @case (TYPE.TEXT) {
+            <app-todo-detail-text [textContent]="employeeTodo.todo.content"></app-todo-detail-text>
+          }
+          @case (TYPE.MAIL) {
+            <app-todo-detail-mail [emailContent]="employeeTodo.todo.content"></app-todo-detail-mail>
+          }
+          @case (TYPE.LINK) {
+            <app-todo-detail-link [linkContent]="employeeTodo.todo.content"></app-todo-detail-link>
+          }
+        }
+      </div>
+    </div>
   </div>
-<!-- State -->
-  <div class="py-10 flex flex-col w-full items-center justify-center border-2">
-    <p class="text-4xl font-bold">Status</p>
-    <p class="text-4xl" [ngClass]="getTodoClass(employeeTodo.state)">{{ employeeTodo.state }}</p>
-  </div>
-<!-- Description -->
-  <div class="my-8 items-center border-b">
-    <p class="text-xl font-bold pb-2">Kommentar</p>
-    <form [formGroup]="descriptionform" class="w-full flex items-center">
-      <mat-form-field class="flex-grow mr-4">
-        <textarea matInput placeholder="Bemerkung" formControlName="description"></textarea>
-      </mat-form-field>
-      <button mat-flat-button color="primary" (click)="saveDescription()">Speichern</button>
-    </form>
-  </div>
-<!-- Content by type -->
-  <div class="w-full items-center">
-    <p class="text-xl font-bold pb-2">Inhalt</p>
-    @switch (employeeTodo.todo.type) {
-      @case (TYPE.TEXT) {
-        <app-todo-detail-text [textContent]="employeeTodo.todo.content"></app-todo-detail-text>
-      }
-      @case (TYPE.MAIL) {
-        <app-todo-detail-mail [emailContent]="employeeTodo.todo.content"></app-todo-detail-mail>
-      }
-      @case (TYPE.LINK) {
-        <app-todo-detail-link [linkContent]="employeeTodo.todo.content"></app-todo-detail-link>
-      }
-    }
-  </div>
-</div>
 }

@@ -25,8 +25,8 @@
 
   <div>
     <mat-list>
-      <mat-list-item *ngFor="let employeeTodo of employee.todos" [ngClass]="getTodoClass(employeeTodo.state)" class="my-4" style="border-radius: 6px">
-        <div class="flex justify-between items-center w-full">
+      <mat-list-item *ngFor="let employeeTodo of employee.todos" [ngClass]="getTodoClass(employeeTodo.state)" class="my-4 border border-black min-h-16" style="border-radius: 6px">
+        <div class="flex justify-between items-center w-full ">
           <div>
             <p class="font-bold">{{ employeeTodo.todo.title }}</p>
           </div>
@@ -37,7 +37,7 @@
                 <mat-option *ngFor="let state of states" [value]="state">{{ state }}</mat-option>
               </mat-select>
             </mat-form-field>
-            <button mat-icon-button [routerLink]="['/employees', employee.id, 'todos', employeeTodo.id]">
+            <button mat-icon-button [routerLink]="['/employees', employee.id, 'todos', employeeTodo.id]" matTooltip="Todo Details" matTooltipPosition="after">
               <mat-icon>menu_open</mat-icon>
             </button>
           </div>
