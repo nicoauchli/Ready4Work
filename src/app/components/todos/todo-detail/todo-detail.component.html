@@ -1,8 +1,25 @@
 @if (employeeTodo) {
   <div class="container">
     <!-- Header  -->
-    <div>
+    <div class="flex flex-row items-center">
       <p class="text-xl font-bold py-2">{{ employeeTodo.todo.title }}</p>
+      @if ( todo && !isDefaultTodo()) {
+        <span class="spacer"></span>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item matTooltip="Todo bearbeiten" matTooltipPosition="above"
+                  [routerLink]="['/employees/' + employeeTodo.employeeId + '/todos/' + employeeTodo.todoId + '/edit']">
+            <mat-icon>edit</mat-icon>
+            <span>Todo bearbeiten</span>
+          </button>
+          <button mat-menu-item matTooltip="Todo löschen" matTooltipPosition="above" (click)="deleteNonDefaultTodo(employeeTodo.todoId)">
+            <mat-icon>delete</mat-icon>
+            <span>Todo löschen</span>
+          </button>
+        </mat-menu>
+      }
       <mat-divider class="py-1"></mat-divider>
     </div>
     <!-- State -->

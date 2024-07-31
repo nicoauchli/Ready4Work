@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TodoService} from "../../../services/todo.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, RouterLink} from "@angular/router";
 import {JsonPipe, NgClass, NgForOf} from "@angular/common";
 import {MatDivider} from "@angular/material/divider";
 import {MatFormField} from "@angular/material/form-field";
@@ -18,6 +18,9 @@ import {FormBuilder, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {MatCard, MatCardContent, MatCardHeader} from "@angular/material/card";
 import {MatInput} from "@angular/material/input";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
+import {MatTooltip} from "@angular/material/tooltip";
+import {ITodoDAO} from "../../../models/ITodoDAO";
 
 @Component({
   selector: 'app-todo-detail',
@@ -42,15 +45,21 @@ import {MatSnackBar} from "@angular/material/snack-bar";
     MatCardHeader,
     MatCardContent,
     MatInput,
-    NgClass
+    NgClass,
+    MatMenu,
+    MatMenuItem,
+    MatTooltip,
+    MatMenuTrigger,
+    RouterLink
   ],
   templateUrl: './todo-detail.component.html',
   styleUrl: './todo-detail.component.scss'
 })
 export class TodoDetailComponent implements OnInit{
 
-  private todoId!: number;
+  private employeeTodoId!: number;
   public employeeTodo!: IEmployeeTodoDAO;
+  public todo!: ITodoDAO;
   public descriptionform!: FormGroup;
 
   constructor(
@@ -66,12 +75,15 @@ export class TodoDetailComponent implements OnInit{
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.todoId = parseInt(params['todoId']);
-      this.todoService.getEmployeeTodoById(this.todoId).subscribe( (employeeTodo: IEmployeeTodoDAO) => {
+      this.employeeTodoId = parseInt(params['employeeTodoId']);
+      this.todoService.getEmployeeTodoById(this.employeeTodoId).subscribe((employeeTodo: IEmployeeTodoDAO) => {
         this.employeeTodo = employeeTodo;
         this.descriptionform.controls['description'].setValue(this.employeeTodo.description);
+        this.todoService.getTodoById(this.employeeTodo.todoId).subscribe((todo: ITodoDAO) => {
+          this.todo = todo;
+        });
       });
-    })
+    });
   }
 
   protected readonly TYPE = TYPE;
@@ -97,4 +109,11 @@ export class TodoDetailComponent implements OnInit{
   }
 
 
+  public deleteNonDefaultTodo(id: number) {
+    // TODO delete non default todo
+  }
+
+  public isDefaultTodo() {
+    return this.todo.isDefault
+  }
 }

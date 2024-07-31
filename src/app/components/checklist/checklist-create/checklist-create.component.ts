@@ -3,7 +3,7 @@ import {MatDivider} from "@angular/material/divider";
 import {MatIcon} from "@angular/material/icon";
 import {MatButton, MatIconButton} from "@angular/material/button";
 import {MatTooltip} from "@angular/material/tooltip";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
@@ -13,6 +13,9 @@ import {NgForOf} from "@angular/common";
 import {ITodoDTO} from "../../../models/ITodoDTO";
 import {TYPE} from "../../../enums/Type";
 import {CdkTextareaAutosize} from "@angular/cdk/text-field";
+import {TodoService} from "../../../services/todo.service";
+import {ITodoDAO} from "../../../models/ITodoDAO";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-checklist-create',
@@ -45,6 +48,9 @@ export class ChecklistCreateComponent {
 
   constructor(
     private fb: FormBuilder,
+    private todoService: TodoService,
+    private _snackBar: MatSnackBar,
+    private router: Router,
   ) {
     this.createChecklistForm = this.fb.group({
       title: new FormControl("", [Validators.required]),
@@ -59,7 +65,10 @@ export class ChecklistCreateComponent {
       type: this.createChecklistForm.controls['type'].value,
       isDefault: true,
       content: this.createChecklistForm.controls['type'].value === TYPE.LINK ? this.linkContentArr : this.createChecklistForm.controls['content'].value    }
-    console.log(newChecklistTodo);
+    this.todoService.createTodo(newChecklistTodo).subscribe( (todo: ITodoDAO) => {
+      this._snackBar.open("Todo erstellt", "", { duration: 2000 });
+      this.router.navigateByUrl(`/checklist`);
+    });
   }
 
 

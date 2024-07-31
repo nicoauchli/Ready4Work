@@ -3,13 +3,19 @@ import {MatButton} from "@angular/material/button";
 import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {SafeHtmlPipe} from "../../../../pipes/safe-html.pipe";
+import {CdkTextareaAutosize} from "@angular/cdk/text-field";
+import {MatInput} from "@angular/material/input";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-todo-detail-mail',
   standalone: true,
   imports: [
     MatButton,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    CdkTextareaAutosize,
+    MatInput,
+    ReactiveFormsModule
   ],
   templateUrl: './todo-detail-mail.component.html',
   styleUrl: './todo-detail-mail.component.scss'
