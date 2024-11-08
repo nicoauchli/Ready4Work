@@ -50,6 +50,7 @@ export class DialogAddNewEmployeeComponent {
         lastname: this.newEmployeeFormGroup.controls['lastname'].value,
       };
       this.employeeService.addNewEmployee(newEmployee).subscribe((employee: IEmployeeDAO) => {
+
         this.employeeAdded.emit(employee);
         this.dialogRef.close();
       });

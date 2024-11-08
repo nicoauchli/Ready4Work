@@ -34,6 +34,7 @@ export class TodoDetailMailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.emailContent[0])
       this.sanitizedContent = this.sanitizer.bypassSecurityTrustHtml(this.emailContent[0]);
   }
 

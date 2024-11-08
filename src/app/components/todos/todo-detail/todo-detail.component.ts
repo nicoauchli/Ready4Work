@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TodoService} from "../../../services/todo.service";
-import {ActivatedRoute, RouterLink} from "@angular/router";
+import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {JsonPipe, NgClass, NgForOf} from "@angular/common";
 import {MatDivider} from "@angular/material/divider";
 import {MatFormField} from "@angular/material/form-field";
@@ -67,6 +67,7 @@ export class TodoDetailComponent implements OnInit{
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
+    private router: Router,
   ) {
     this.descriptionform = this.fb.group({
       description: []
@@ -78,8 +79,14 @@ export class TodoDetailComponent implements OnInit{
       this.employeeTodoId = parseInt(params['employeeTodoId']);
       this.todoService.getEmployeeTodoById(this.employeeTodoId).subscribe((employeeTodo: IEmployeeTodoDAO) => {
         this.employeeTodo = employeeTodo;
+        if (employeeTodo.todo.type == TYPE.MAIL) {
+          employeeTodo.todo.content = [employeeTodo.todo.content.join('')]; // oder `.join('\n')` für Zeilenumbrüche
+        }
         this.descriptionform.controls['description'].setValue(this.employeeTodo.description);
         this.todoService.getTodoById(this.employeeTodo.todoId).subscribe((todo: ITodoDAO) => {
+          if (todo.type == TYPE.MAIL) {
+              todo.content = [todo.content.join('')]; // oder `.join('\n')` für Zeilenumbrüche
+          }
           this.todo = todo;
         });
       });
@@ -110,7 +117,19 @@ export class TodoDetailComponent implements OnInit{
 
 
   public deleteNonDefaultTodo(id: number) {
-    // TODO delete non default todo
+    this.todoService.deleteTodoById(id).subscribe(
+      () => {
+        this.snackBar.open('Todo erfolgreich gelöscht', 'Schließen', {
+          duration: 3000,
+        });
+        this.router.navigateByUrl(`/emplyoees` + `/${this.employeeTodoId}`);
+      },
+        () => {
+          this.snackBar.open('Fehler beim löschen des Todos', 'Schließen', {
+            duration: 3000,
+          });
+        }
+    );
   }
 
   public isDefaultTodo() {

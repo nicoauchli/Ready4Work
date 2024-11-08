@@ -87,9 +87,7 @@ export class ChecklistEditComponent implements OnInit {
   }
 
   public changeTypeForEdit() {
-    console.log("change called")
     if (this.todo.content) {
-      console.log("content clear")
       this.todo.content = [];
       this.checklistTodoFormgroup.controls['content'].setValue("");
     }
