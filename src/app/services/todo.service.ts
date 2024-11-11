@@ -11,7 +11,7 @@ import {IEmployeeTodoDTO} from "../models/IEmployeeTodoDTO";
 })
 export class TodoService {
 
-  private URI = "http://localhost:3000";
+  private URI = "https://mighty-hollows-68416-9ec3d8df29ee.herokuapp.com";
 
   constructor(
     private http: HttpClient,
