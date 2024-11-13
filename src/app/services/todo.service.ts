@@ -5,13 +5,15 @@ import {IEmployeeTodoDAO} from "../models/IEmployeeTodoDAO";
 import {ITodoDAO} from "../models/ITodoDAO";
 import {ITodoDTO} from "../models/ITodoDTO";
 import {IEmployeeTodoDTO} from "../models/IEmployeeTodoDTO";
+import {IEmployeeDAO} from "../models/IEmployeeDAO";
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoService {
 
-  private URI = "https://mighty-hollows-68416-9ec3d8df29ee.herokuapp.com";
+  // private URI = "https://mighty-hollows-68416-9ec3d8df29ee.herokuapp.com";
+  private URI = "http://localhost:3000"
 
   constructor(
     private http: HttpClient,
@@ -42,7 +44,6 @@ export class TodoService {
   public createEmployeeTodo(employeeTodo: IEmployeeTodoDTO): Observable<IEmployeeTodoDAO> {
     return this.http.post<IEmployeeTodoDAO>(this.URI + "/employee-to-todo", employeeTodo);
   }
-
   // Get all default Todos
   public getAllDefaultTodos(): Observable<ITodoDAO[]> {
     return this.http.get<ITodoDAO[]>(this.URI + "/todos/default");

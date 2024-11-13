@@ -3,13 +3,16 @@ import {HttpClient} from "@angular/common/http";
 import {IEmployeeDAO} from "../models/IEmployeeDAO";
 import {Observable} from "rxjs";
 import {IEmployeeDTO} from "../models/IEmployeeDTO";
+import {ITodoDAO} from "../models/ITodoDAO";
+import {IEmployeeTodoDAO} from "../models/IEmployeeTodoDAO";
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
 
-  private URI = "https://mighty-hollows-68416-9ec3d8df29ee.herokuapp.com";
+  // private URI = "https://mighty-hollows-68416-9ec3d8df29ee.herokuapp.com";
+  private URI = "http://localhost:3000"
 
   constructor(
     private http: HttpClient
@@ -33,5 +36,9 @@ export class EmployeeService {
 
   public deleteEmployeeById(employeeId: number): Observable<any> {
     return this.http.delete<any>(this.URI + "/employees/" + employeeId);
+  }
+  // Update missing default todos for a employee
+  public updateEmployeeDefaultTodos(employee: IEmployeeDAO): Observable<IEmployeeTodoDAO[]> {
+    return this.http.get<IEmployeeTodoDAO[]>(this.URI + "/employee-to-todo/" + employee.id + "/user-checklist-update");
   }
 }

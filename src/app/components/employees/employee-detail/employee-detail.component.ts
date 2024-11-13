@@ -94,4 +94,10 @@ export class EmployeeDetailComponent implements OnInit {
       this.employee = employee
     });
   }
+
+  public updateEmployeeDefaultTodos() {
+    this.employeeService.updateEmployeeDefaultTodos(this.employee).subscribe((todos) => {
+      this.employee.todos = todos;
+    });
+  }
 }
