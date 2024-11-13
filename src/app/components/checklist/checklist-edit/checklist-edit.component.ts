@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ITodoDAO} from "../../../models/ITodoDAO";
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {TodoService} from "../../../services/todo.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import { TYPE } from '../../../enums/Type';
 import {MODE} from "../../../enums/Mode";
@@ -17,6 +17,7 @@ import {NgForOf} from "@angular/common";
 import {MatDivider} from "@angular/material/divider";
 import {MatMenu, MatMenuItem} from "@angular/material/menu";
 import {MatTooltip} from "@angular/material/tooltip";
+import {identity} from "rxjs";
 
 @Component({
   selector: 'app-checklist-edit',
@@ -36,7 +37,8 @@ import {MatTooltip} from "@angular/material/tooltip";
     MatDivider,
     MatMenu,
     MatMenuItem,
-    MatTooltip
+    MatTooltip,
+    RouterLink
   ],
   templateUrl: './checklist-edit.component.html',
   styleUrl: './checklist-edit.component.scss'
@@ -112,4 +114,5 @@ export class ChecklistEditComponent implements OnInit {
     });
   }
 
+  protected readonly identity = identity;
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {CdkTextareaAutosize} from "@angular/cdk/text-field";
-import {MatButton} from "@angular/material/button";
+import {MatButton, MatIconButton} from "@angular/material/button";
 import {MatDivider} from "@angular/material/divider";
 import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
@@ -12,25 +12,29 @@ import {ITodoDTO} from "../../../models/ITodoDTO";
 import { TYPE } from '../../../enums/Type';
 import {TodoService} from "../../../services/todo.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {IEmployeeTodoDTO} from "../../../models/IEmployeeTodoDTO";
 import {ITodoDAO} from "../../../models/ITodoDAO";
+import {MatIcon} from "@angular/material/icon";
 
 @Component({
   selector: 'app-todo-create',
   standalone: true,
-    imports: [
-        CdkTextareaAutosize,
-        MatButton,
-        MatDivider,
-        MatFormField,
-        MatInput,
-        MatLabel,
-        MatOption,
-        MatSelect,
-        NgForOf,
-        ReactiveFormsModule
-    ],
+  imports: [
+    CdkTextareaAutosize,
+    MatButton,
+    MatDivider,
+    MatFormField,
+    MatInput,
+    MatLabel,
+    MatOption,
+    MatSelect,
+    NgForOf,
+    ReactiveFormsModule,
+    MatIcon,
+    MatIconButton,
+    RouterLink
+  ],
   templateUrl: './todo-create.component.html',
   styleUrl: './todo-create.component.scss'
 })

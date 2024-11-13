@@ -3,16 +3,15 @@ import {HttpClient} from "@angular/common/http";
 import {IEmployeeDAO} from "../models/IEmployeeDAO";
 import {Observable} from "rxjs";
 import {IEmployeeDTO} from "../models/IEmployeeDTO";
-import {ITodoDAO} from "../models/ITodoDAO";
 import {IEmployeeTodoDAO} from "../models/IEmployeeTodoDAO";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
 
-  // private URI = "https://mighty-hollows-68416-9ec3d8df29ee.herokuapp.com";
-  private URI = "http://localhost:3000"
+  private URI = environment.apiUrl
 
   constructor(
     private http: HttpClient

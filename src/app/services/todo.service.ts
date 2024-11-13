@@ -5,15 +5,14 @@ import {IEmployeeTodoDAO} from "../models/IEmployeeTodoDAO";
 import {ITodoDAO} from "../models/ITodoDAO";
 import {ITodoDTO} from "../models/ITodoDTO";
 import {IEmployeeTodoDTO} from "../models/IEmployeeTodoDTO";
-import {IEmployeeDAO} from "../models/IEmployeeDAO";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoService {
 
-  // private URI = "https://mighty-hollows-68416-9ec3d8df29ee.herokuapp.com";
-  private URI = "http://localhost:3000"
+  private URI = environment.apiUrl
 
   constructor(
     private http: HttpClient,

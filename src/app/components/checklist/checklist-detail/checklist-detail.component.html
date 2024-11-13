@@ -2,6 +2,11 @@
   <div class="container">
     <!-- Header -->
     <div class="flex flex-row items-center">
+      <div>
+        <button mat-icon-button [routerLink]="['/checklist']">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+      </div>
       <p class="text-xl font-bold">{{ todo.title }}</p>
       <span class="spacer"></span>
 

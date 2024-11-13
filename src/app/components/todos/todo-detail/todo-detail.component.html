@@ -2,6 +2,11 @@
   <div class="container">
     <!-- Header  -->
     <div class="flex flex-row items-center">
+      <div>
+        <button mat-icon-button [routerLink]="['/employees', employeeTodo.employeeId]">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+      </div>
       <p class="text-xl font-bold py-2">{{ employeeTodo.todo.title }}</p>
       @if ( todo && !isDefaultTodo()) {
         <span class="spacer"></span>

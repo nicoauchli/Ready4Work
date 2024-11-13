@@ -1,6 +1,11 @@
 @if (employee) {
 <div class="container">
   <div class="flex flex-row items-center">
+    <div>
+      <button mat-icon-button routerLink="/employees">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+    </div>
     <p class="text-xl font-bold">{{ employee.firstname + ' ' + employee.lastname }}</p>
     <span class="spacer"></span>
 

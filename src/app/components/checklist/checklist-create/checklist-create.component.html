@@ -1,6 +1,10 @@
 <div class="container border rounded-xl shadow-xl p-6">
-
-  <p class="text-xl font-bold mb-4">Checklist Todo erstellen</p>
+  <div class="flex items-center">
+    <button mat-icon-button [routerLink]="['/checklist/']">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <p class="text-xl font-bold">Checklist Todo erstellen</p>
+  </div>
   <mat-divider class="py-4"></mat-divider>
   <form [formGroup]="createChecklistForm" class="flex flex-col">
     <mat-form-field appearance="fill" class="w-full">
