@@ -40,7 +40,15 @@
         <p class="text-xl font-bold pb-2">Kommentar</p>
         <form [formGroup]="descriptionform" class="w-full flex items-center">
           <mat-form-field class="flex-grow mr-4">
-            <textarea matInput placeholder="Bemerkung" formControlName="description"></textarea>
+  <textarea
+    matInput
+    placeholder="Bemerkung"
+    formControlName="description"
+    class="resize-none w-full overflow-hidden"
+    (input)="adjustTextareaHeight($event)"
+    rows="1"
+    #commentTextarea
+  ></textarea>
           </mat-form-field>
           <button mat-flat-button color="primary" (click)="saveDescription()">Speichern</button>
         </form>

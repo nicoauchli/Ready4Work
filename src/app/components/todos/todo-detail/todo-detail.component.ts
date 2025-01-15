@@ -135,4 +135,11 @@ export class TodoDetailComponent implements OnInit{
   public isDefaultTodo() {
     return this.todo.isDefault
   }
+
+  adjustTextareaHeight(event: Event): void {
+    const textarea = event.target as HTMLTextAreaElement;
+    textarea.style.height = 'auto'; // Setzt die Höhe zurück, damit sie nicht blockiert ist
+    textarea.style.height = `${textarea.scrollHeight}px`; // Passt die Höhe an den Textinhalt an
+  }
+
 }
