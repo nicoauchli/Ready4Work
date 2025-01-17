@@ -13,9 +13,6 @@ import {MatButton, MatIconButton} from "@angular/material/button";
 import {IEmployeeTodoDAO} from "../../../models/IEmployeeTodoDAO";
 import {MatTooltip} from "@angular/material/tooltip";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {
-  DialogAddNewEmployeeComponent
-} from "../employees-list/dialog-add-new-employee/dialog-add-new-employee.component";
 import {MatDialog} from "@angular/material/dialog";
 import {DialogEditEmployeeComponent} from "./dialog-edit-employee/dialog-edit-employee.component";
 import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
@@ -64,7 +61,9 @@ export class EmployeeDetailComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.employeeId = parseInt(params['id']);
       this.employeeService.getEmployeeWithTodosById(this.employeeId).subscribe((employee: IEmployeeDAO) => {
-          this.employee = employee;
+        if (employee.todos)
+        employee.todos = employee.todos.sort((a, b) => b.id - a.id);
+        this.employee = employee;
       })
     })
   }

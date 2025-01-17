@@ -21,6 +21,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
 import {MatTooltip} from "@angular/material/tooltip";
 import {ITodoDAO} from "../../../models/ITodoDAO";
+import {CdkTextareaAutosize} from "@angular/cdk/text-field";
 
 @Component({
   selector: 'app-todo-detail',
@@ -50,7 +51,8 @@ import {ITodoDAO} from "../../../models/ITodoDAO";
     MatMenuItem,
     MatTooltip,
     MatMenuTrigger,
-    RouterLink
+    RouterLink,
+    CdkTextareaAutosize
   ],
   templateUrl: './todo-detail.component.html',
   styleUrl: './todo-detail.component.scss'

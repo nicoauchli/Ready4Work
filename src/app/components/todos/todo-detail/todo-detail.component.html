@@ -44,10 +44,9 @@
     matInput
     placeholder="Bemerkung"
     formControlName="description"
-    class="resize-none w-full overflow-hidden"
+    class=" w-full overflow-hidden" cdkTextareaAutosize
     (input)="adjustTextareaHeight($event)"
     rows="1"
-    #commentTextarea
   ></textarea>
           </mat-form-field>
           <button mat-flat-button color="primary" (click)="saveDescription()">Speichern</button>
