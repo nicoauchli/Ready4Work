@@ -1,10 +1,4 @@
-import {
-  HttpContextToken,
-  HttpEvent,
-  HttpHandler,
-  HttpInterceptor,
-  HttpRequest
-} from '@angular/common/http';
+import { HttpContextToken, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import {Injectable} from "@angular/core";
 import {LoadingService} from "../services/loading.service";
 import {finalize, Observable} from "rxjs";
