@@ -6,7 +6,7 @@ import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {MatOption} from "@angular/material/autocomplete";
 import {MatSelect} from "@angular/material/select";
-import {NgForOf} from "@angular/common";
+
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {ITodoDTO} from "../../../models/ITodoDTO";
 import { TYPE } from '../../../enums/Type';
@@ -20,20 +20,19 @@ import {MatIcon} from "@angular/material/icon";
 @Component({
     selector: 'app-todo-create',
     imports: [
-        CdkTextareaAutosize,
-        MatButton,
-        MatDivider,
-        MatFormField,
-        MatInput,
-        MatLabel,
-        MatOption,
-        MatSelect,
-        NgForOf,
-        ReactiveFormsModule,
-        MatIcon,
-        MatIconButton,
-        RouterLink
-    ],
+    CdkTextareaAutosize,
+    MatButton,
+    MatDivider,
+    MatFormField,
+    MatInput,
+    MatLabel,
+    MatOption,
+    MatSelect,
+    ReactiveFormsModule,
+    MatIcon,
+    MatIconButton,
+    RouterLink
+],
     templateUrl: './todo-create.component.html',
     styleUrl: './todo-create.component.scss'
 })

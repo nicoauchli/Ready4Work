@@ -14,7 +14,9 @@
 
     <mat-form-field class="w-full">
       <mat-select formControlName="type" placeholder="Typ">
-        <mat-option *ngFor="let type of types" [value]="type" type="text" (onSelectionChange)="clearContent()">{{ type }}</mat-option>
+        @for (type of types; track type) {
+          <mat-option [value]="type" type="text" (onSelectionChange)="clearContent()">{{ type }}</mat-option>
+        }
       </mat-select>
     </mat-form-field>
 

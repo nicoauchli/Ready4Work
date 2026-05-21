@@ -22,7 +22,7 @@ import {MatTooltip} from "@angular/material/tooltip";
 import {MatCard, MatCardContent, MatCardHeader, MatCardTitle} from "@angular/material/card";
 import {MatOption} from "@angular/material/autocomplete";
 import {MatSelect} from "@angular/material/select";
-import {NgClass, NgForOf} from "@angular/common";
+import { NgClass } from "@angular/common";
 import {TYPE} from "../../../enums/Type";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";

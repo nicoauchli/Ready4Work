@@ -1,58 +1,62 @@
 @if (employee) {
-<div class="container">
-  <div class="flex flex-row items-center">
-    <div>
-      <button mat-icon-button routerLink="/employees">
-        <mat-icon>arrow_back</mat-icon>
-      </button>
+  <div class="container">
+    <div class="flex flex-row items-center">
+      <div>
+        <button mat-icon-button routerLink="/employees">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+      </div>
+      <p class="text-xl font-bold">{{ employee.firstname + ' ' + employee.lastname }}</p>
+      <span class="spacer"></span>
+
+      <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item matTooltip="Todo für Mitarbeiter erstellen" matTooltipPosition="above" [routerLink]="['/employees/' + employeeId + '/create']">
+          <mat-icon>add</mat-icon>
+          <span>Todo</span>
+        </button>
+        <button mat-menu-item matTooltip="Mitarbeiter bearbeiten" (click)="openDialogEditEmployee()" matTooltipPosition="above">
+          <mat-icon>edit</mat-icon>
+          <span>Bearbeiten</span>
+        </button>
+        <button mat-menu-item matTooltip="Mitarbeiter löschen" matTooltipPosition="above" (click)="deleteEmployee()">
+          <mat-icon>delete</mat-icon>
+          <span>Löschen</span>
+        </button>
+        <button mat-menu-item matTooltip="Mitarbeiter Todos aktualisieren" matTooltipPosition="above" (click)="updateEmployeeDefaultTodos()">
+          <mat-icon>system_update_tv</mat-icon>
+          <span>Aktualisieren</span>
+        </button>
+      </mat-menu>
+
     </div>
-    <p class="text-xl font-bold">{{ employee.firstname + ' ' + employee.lastname }}</p>
-    <span class="spacer"></span>
+    <mat-divider class="py-1"></mat-divider>
 
-    <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item matTooltip="Todo für Mitarbeiter erstellen" matTooltipPosition="above" [routerLink]="['/employees/' + employeeId + '/create']">
-        <mat-icon>add</mat-icon>
-        <span>Todo</span>
-      </button>
-      <button mat-menu-item matTooltip="Mitarbeiter bearbeiten" (click)="openDialogEditEmployee()" matTooltipPosition="above">
-        <mat-icon>edit</mat-icon>
-        <span>Bearbeiten</span>
-      </button>
-      <button mat-menu-item matTooltip="Mitarbeiter löschen" matTooltipPosition="above" (click)="deleteEmployee()">
-        <mat-icon>delete</mat-icon>
-        <span>Löschen</span>
-      </button>
-      <button mat-menu-item matTooltip="Mitarbeiter Todos aktualisieren" matTooltipPosition="above" (click)="updateEmployeeDefaultTodos()">
-        <mat-icon>system_update_tv</mat-icon>
-        <span>Aktualisieren</span>
-      </button>
-    </mat-menu>
-
+    <div>
+      <mat-list>
+        @for (employeeTodo of employee.todos; track employeeTodo) {
+          <mat-list-item [ngClass]="getTodoClass(employeeTodo.state)" class="my-4 border border-black min-h-16" style="border-radius: 6px">
+            <div class="flex justify-between items-center w-full ">
+              <div>
+                <p class="font-bold">{{ employeeTodo.todo.title }}</p>
+              </div>
+              <span class="spacer"></span>
+              <div class="flex items-center">
+                <mat-form-field class="w-32">
+                  <mat-select [(value)]="employeeTodo.state" (selectionChange)="updateStatus(employeeTodo, $event.value)">
+                    @for (state of states; track state) {
+                      <mat-option [value]="state">{{ state }}</mat-option>
+                    }
+                  </mat-select>
+                </mat-form-field>
+                <button mat-icon-button [routerLink]="['/employees', employee.id, 'todos', employeeTodo.id]" matTooltip="Todo Details" matTooltipPosition="after">
+                  <mat-icon>menu_open</mat-icon>
+                </button>
+              </div>
+            </div>
+          </mat-list-item>
+        }
+      </mat-list>
+    </div>
   </div>
-  <mat-divider class="py-1"></mat-divider>
-
-  <div>
-    <mat-list>
-      <mat-list-item *ngFor="let employeeTodo of employee.todos" [ngClass]="getTodoClass(employeeTodo.state)" class="my-4 border border-black min-h-16" style="border-radius: 6px">
-        <div class="flex justify-between items-center w-full ">
-          <div>
-            <p class="font-bold">{{ employeeTodo.todo.title }}</p>
-          </div>
-          <span class="spacer"></span>
-          <div class="flex items-center">
-            <mat-form-field class="w-32">
-              <mat-select [(value)]="employeeTodo.state" (selectionChange)="updateStatus(employeeTodo, $event.value)">
-                <mat-option *ngFor="let state of states" [value]="state">{{ state }}</mat-option>
-              </mat-select>
-            </mat-form-field>
-            <button mat-icon-button [routerLink]="['/employees', employee.id, 'todos', employeeTodo.id]" matTooltip="Todo Details" matTooltipPosition="after">
-              <mat-icon>menu_open</mat-icon>
-            </button>
-          </div>
-        </div>
-      </mat-list-item>
-    </mat-list>
-  </div>
-</div>
 }

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TodoService} from "../../../services/todo.service";
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
-import {JsonPipe, NgClass, NgForOf} from "@angular/common";
+import { JsonPipe, NgClass } from "@angular/common";
 import {MatDivider} from "@angular/material/divider";
 import {MatFormField} from "@angular/material/form-field";
 import {MatIcon} from "@angular/material/icon";

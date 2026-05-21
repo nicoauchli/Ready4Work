@@ -13,7 +13,7 @@ import {MatIcon} from "@angular/material/icon";
 import {MatInput} from "@angular/material/input";
 import {MatOption} from "@angular/material/autocomplete";
 import {MatSelect} from "@angular/material/select";
-import {NgForOf} from "@angular/common";
+
 import {MatDivider} from "@angular/material/divider";
 import {MatMenu, MatMenuItem} from "@angular/material/menu";
 import {MatTooltip} from "@angular/material/tooltip";
@@ -31,11 +31,10 @@ import {identity} from "rxjs";
     MatLabel,
     MatOption,
     MatSelect,
-    NgForOf,
     ReactiveFormsModule,
     MatDivider,
     RouterLink
-  ],
+],
   templateUrl: './checklist-edit.component.html',
   standalone: true,
   styleUrl: './checklist-edit.component.scss'

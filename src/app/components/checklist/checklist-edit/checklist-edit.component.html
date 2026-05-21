@@ -3,9 +3,9 @@
 
     <!-- Header -->
     <div class="flex items-center py-2">
-        <button mat-icon-button [routerLink]="['/checklist', todoId]">
-          <mat-icon>arrow_back</mat-icon>
-        </button>
+      <button mat-icon-button [routerLink]="['/checklist', todoId]">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
       <p class="text-xl font-bold">{{ todo.title }}</p>
       <span class="spacer"></span>
     </div>
@@ -19,23 +19,25 @@
 
       <mat-form-field class="w-full">
         <mat-select formControlName="type" placeholder="Typ">
-          <mat-option *ngFor="let type of types" [value]="type" type="text"
-                      (selectionchange)="changeTypeForEdit()">{{ type }}
-          </mat-option>
+          @for (type of types; track type) {
+            <mat-option [value]="type" type="text"
+              (selectionchange)="changeTypeForEdit()">{{ type }}
+            </mat-option>
+          }
         </mat-select>
       </mat-form-field>
 
       @switch (checklistTodoFormgroup.controls['type'].value) {
         @case (TYPE.TEXT) {
           <mat-form-field class="w-full">
-              <textarea matInput formControlName="content" cdkTextareaAutosize cdkAutosizeMinRows="20"
-                        cdkAutosizeMaxRows="100" placeholder="Inhalt"></textarea>
+            <textarea matInput formControlName="content" cdkTextareaAutosize cdkAutosizeMinRows="20"
+            cdkAutosizeMaxRows="100" placeholder="Inhalt"></textarea>
           </mat-form-field>
         }
         @case (TYPE.MAIL) {
           <mat-form-field class="w-full">
-              <textarea matInput formControlName="content" cdkTextareaAutosize cdkAutosizeMinRows="20"
-                        cdkAutosizeMaxRows="100" placeholder="Inhalt"></textarea>
+            <textarea matInput formControlName="content" cdkTextareaAutosize cdkAutosizeMinRows="20"
+            cdkAutosizeMaxRows="100" placeholder="Inhalt"></textarea>
           </mat-form-field>
         }
         @case (TYPE.LINK) {

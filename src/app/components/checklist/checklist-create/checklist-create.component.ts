@@ -9,7 +9,7 @@ import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {MatOption} from "@angular/material/autocomplete";
 import {MatSelect} from "@angular/material/select";
-import {NgForOf} from "@angular/common";
+
 import {ITodoDTO} from "../../../models/ITodoDTO";
 import {TYPE} from "../../../enums/Type";
 import {CdkTextareaAutosize} from "@angular/cdk/text-field";
@@ -31,9 +31,8 @@ import {MatSnackBar} from "@angular/material/snack-bar";
     MatButton,
     MatOption,
     MatSelect,
-    NgForOf,
     CdkTextareaAutosize
-  ],
+],
   templateUrl: './checklist-create.component.html',
   standalone: true,
   styleUrl: './checklist-create.component.scss'

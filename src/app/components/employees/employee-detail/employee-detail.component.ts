@@ -3,7 +3,7 @@ import {EmployeeService} from "../../../services/employee.service";
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {IEmployeeDAO} from "../../../models/IEmployeeDAO";
 import {MatList, MatListItem} from "@angular/material/list";
-import {NgClass, NgForOf} from "@angular/common";
+import { NgClass } from "@angular/common";
 import {MatFormField} from "@angular/material/form-field";
 import {MatOption, MatSelect} from "@angular/material/select";
 import {TodoService} from "../../../services/todo.service";
@@ -22,7 +22,6 @@ import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
   imports: [
     MatList,
     MatListItem,
-    NgForOf,
     MatFormField,
     MatSelect,
     MatOption,
@@ -35,7 +34,7 @@ import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
     MatMenuTrigger,
     MatMenu,
     MatMenuItem
-  ],
+],
   templateUrl: './employee-detail.component.html',
   standalone: true,
   styleUrl: './employee-detail.component.scss'

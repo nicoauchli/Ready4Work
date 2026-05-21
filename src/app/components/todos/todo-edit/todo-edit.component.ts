@@ -10,26 +10,25 @@ import {MatIcon} from "@angular/material/icon";
 import {MatInput} from "@angular/material/input";
 import {MatOption} from "@angular/material/autocomplete";
 import {MatSelect} from "@angular/material/select";
-import {NgForOf} from "@angular/common";
+
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import { TYPE } from '../../../enums/Type';
 
 @Component({
     selector: 'app-todo-edit',
     imports: [
-        CdkTextareaAutosize,
-        MatButton,
-        MatDivider,
-        MatFormField,
-        MatIcon,
-        MatIconButton,
-        MatInput,
-        MatLabel,
-        MatOption,
-        MatSelect,
-        NgForOf,
-        ReactiveFormsModule
-    ],
+    CdkTextareaAutosize,
+    MatButton,
+    MatDivider,
+    MatFormField,
+    MatIcon,
+    MatIconButton,
+    MatInput,
+    MatLabel,
+    MatOption,
+    MatSelect,
+    ReactiveFormsModule
+],
     templateUrl: './todo-edit.component.html',
     styleUrl: './todo-edit.component.scss'
 })
