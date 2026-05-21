@@ -21,7 +21,6 @@ import {identity} from "rxjs";
 
 @Component({
   selector: 'app-checklist-edit',
-  standalone: true,
   imports: [
     CdkTextareaAutosize,
     MatButton,
@@ -35,12 +34,10 @@ import {identity} from "rxjs";
     NgForOf,
     ReactiveFormsModule,
     MatDivider,
-    MatMenu,
-    MatMenuItem,
-    MatTooltip,
     RouterLink
   ],
   templateUrl: './checklist-edit.component.html',
+  standalone: true,
   styleUrl: './checklist-edit.component.scss'
 })
 export class ChecklistEditComponent implements OnInit {

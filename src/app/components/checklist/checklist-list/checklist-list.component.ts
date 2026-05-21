@@ -10,22 +10,21 @@ import {TodoService} from "../../../services/todo.service";
 import {NgClass} from "@angular/common";
 
 @Component({
-  selector: 'app-checklist-list',
-  standalone: true,
-  imports: [
-    MatIcon,
-    MatIconButton,
-    MatTooltip,
-    MatDivider,
-    MatActionList,
-    MatListItem,
-    MatListItemIcon,
-    MatListItemTitle,
-    RouterLink,
-    NgClass
-  ],
-  templateUrl: './checklist-list.component.html',
-  styleUrl: './checklist-list.component.scss'
+    selector: 'app-checklist-list',
+    imports: [
+        MatIcon,
+        MatIconButton,
+        MatTooltip,
+        MatDivider,
+        MatActionList,
+        MatListItem,
+        MatListItemIcon,
+        MatListItemTitle,
+        RouterLink,
+        NgClass
+    ],
+    templateUrl: './checklist-list.component.html',
+    styleUrl: './checklist-list.component.scss'
 })
 export class ChecklistListComponent implements OnInit {
 

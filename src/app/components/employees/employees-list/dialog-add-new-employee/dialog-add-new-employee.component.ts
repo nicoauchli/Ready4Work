@@ -11,20 +11,17 @@ import {IEmployeeDAO} from "../../../../models/IEmployeeDAO";
 
 @Component({
   selector: 'app-dialog-add-new-employee',
-  standalone: true,
   imports: [
-    MatDialogContainer,
     MatDialogContent,
     MatDialogActions,
     MatButton,
-    MatIcon,
-    MatIconButton,
     ReactiveFormsModule,
     MatFormField,
     MatInput,
     MatLabel,
   ],
   templateUrl: './dialog-add-new-employee.component.html',
+  standalone: true,
   styleUrl: './dialog-add-new-employee.component.scss'
 })
 export class DialogAddNewEmployeeComponent {

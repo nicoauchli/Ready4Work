@@ -30,35 +30,19 @@ import {CdkTextareaAutosize} from "@angular/cdk/text-field";
 
 @Component({
   selector: 'app-checklist-detail',
-  standalone: true,
   imports: [
-    MatButton,
     MatDivider,
-    MatFormField,
-    MatInput,
     ReactiveFormsModule,
-    TodoDetailLinkComponent,
-    TodoDetailMailComponent,
-    TodoDetailTextComponent,
     MatIcon,
     MatIconButton,
     MatTooltip,
-    MatCard,
-    MatCardHeader,
-    MatCardContent,
-    MatLabel,
-    MatOption,
-    MatSelect,
-    NgForOf,
-    MatCardTitle,
     MatMenu,
     MatMenuItem,
     MatMenuTrigger,
-    NgClass,
-    CdkTextareaAutosize,
     RouterLink
   ],
   templateUrl: './checklist-detail.component.html',
+  standalone: true,
   styleUrl: './checklist-detail.component.scss'
 })
 export class ChecklistDetailComponent implements OnInit {

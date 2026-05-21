@@ -11,19 +11,17 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-dialog-edit-employee',
-  standalone: true,
   imports: [
     MatDialogActions,
     MatDialogContent,
     MatFormField,
-    MatIcon,
-    MatIconButton,
     MatInput,
     MatLabel,
     ReactiveFormsModule,
     MatButton
   ],
   templateUrl: './dialog-edit-employee.component.html',
+  standalone: true,
   styleUrl: './dialog-edit-employee.component.scss'
 })
 export class DialogEditEmployeeComponent {

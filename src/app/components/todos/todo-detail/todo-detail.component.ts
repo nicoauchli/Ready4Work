@@ -25,26 +25,16 @@ import {CdkTextareaAutosize} from "@angular/cdk/text-field";
 
 @Component({
   selector: 'app-todo-detail',
-  standalone: true,
   imports: [
-    JsonPipe,
     MatDivider,
     MatFormField,
     MatIcon,
     MatIconButton,
-    MatList,
-    MatListItem,
-    MatOption,
-    MatSelect,
-    NgForOf,
     TodoDetailTextComponent,
     TodoDetailMailComponent,
     TodoDetailLinkComponent,
     ReactiveFormsModule,
     MatButton,
-    MatCard,
-    MatCardHeader,
-    MatCardContent,
     MatInput,
     NgClass,
     MatMenu,
@@ -55,6 +45,7 @@ import {CdkTextareaAutosize} from "@angular/cdk/text-field";
     CdkTextareaAutosize
   ],
   templateUrl: './todo-detail.component.html',
+  standalone: true,
   styleUrl: './todo-detail.component.scss'
 })
 export class TodoDetailComponent implements OnInit{

@@ -19,12 +19,10 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-checklist-create',
-  standalone: true,
   imports: [
     MatDivider,
     MatIcon,
     MatIconButton,
-    MatTooltip,
     RouterLink,
     ReactiveFormsModule,
     MatFormField,
@@ -37,6 +35,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
     CdkTextareaAutosize
   ],
   templateUrl: './checklist-create.component.html',
+  standalone: true,
   styleUrl: './checklist-create.component.scss'
 })
 export class ChecklistCreateComponent {

@@ -18,25 +18,24 @@ import {ITodoDAO} from "../../../models/ITodoDAO";
 import {MatIcon} from "@angular/material/icon";
 
 @Component({
-  selector: 'app-todo-create',
-  standalone: true,
-  imports: [
-    CdkTextareaAutosize,
-    MatButton,
-    MatDivider,
-    MatFormField,
-    MatInput,
-    MatLabel,
-    MatOption,
-    MatSelect,
-    NgForOf,
-    ReactiveFormsModule,
-    MatIcon,
-    MatIconButton,
-    RouterLink
-  ],
-  templateUrl: './todo-create.component.html',
-  styleUrl: './todo-create.component.scss'
+    selector: 'app-todo-create',
+    imports: [
+        CdkTextareaAutosize,
+        MatButton,
+        MatDivider,
+        MatFormField,
+        MatInput,
+        MatLabel,
+        MatOption,
+        MatSelect,
+        NgForOf,
+        ReactiveFormsModule,
+        MatIcon,
+        MatIconButton,
+        RouterLink
+    ],
+    templateUrl: './todo-create.component.html',
+    styleUrl: './todo-create.component.scss'
 })
 export class TodoCreateComponent {
   public createEmployeeTodoForm: FormGroup;

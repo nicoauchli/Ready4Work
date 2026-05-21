@@ -8,9 +8,9 @@ import {LoadingIndicatorComponent} from "./components/loading-indicator/loading-
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, MatToolbar, MatListItem, MatIconButton, MatIcon, RouterLink, MatButton, LoadingIndicatorComponent],
+  imports: [RouterOutlet, MatToolbar, MatIcon, RouterLink, MatButton, LoadingIndicatorComponent],
   templateUrl: './app.component.html',
+  standalone: true,
   styleUrl: './app.component.scss'
 })
 export class AppComponent {

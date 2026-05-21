@@ -19,7 +19,6 @@ import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
 
 @Component({
   selector: 'app-employee-detail',
-  standalone: true,
   imports: [
     MatList,
     MatListItem,
@@ -33,12 +32,12 @@ import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
     MatIconButton,
     NgClass,
     MatTooltip,
-    MatButton,
     MatMenuTrigger,
     MatMenu,
     MatMenuItem
   ],
   templateUrl: './employee-detail.component.html',
+  standalone: true,
   styleUrl: './employee-detail.component.scss'
 })
 export class EmployeeDetailComponent implements OnInit {

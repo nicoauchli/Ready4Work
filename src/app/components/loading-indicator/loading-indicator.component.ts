@@ -7,11 +7,11 @@ import {AsyncPipe, NgIf, NgTemplateOutlet} from "@angular/common";
 
 @Component({
   selector: 'loading-indicator',
-  standalone: true,
   imports: [
-    MatProgressSpinner, AsyncPipe, NgIf, NgTemplateOutlet
+    MatProgressSpinner, AsyncPipe, NgTemplateOutlet
   ],
   templateUrl: './loading-indicator.component.html',
+  standalone: true,
   styleUrl: './loading-indicator.component.scss'
 })
 export class LoadingIndicatorComponent implements OnInit {

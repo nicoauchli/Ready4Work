@@ -9,15 +9,14 @@ import {ReactiveFormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-todo-detail-mail',
-  standalone: true,
   imports: [
     MatButton,
-    SafeHtmlPipe,
     CdkTextareaAutosize,
     MatInput,
     ReactiveFormsModule
   ],
   templateUrl: './todo-detail-mail.component.html',
+  standalone: true,
   styleUrl: './todo-detail-mail.component.scss'
 })
 export class TodoDetailMailComponent implements OnInit {

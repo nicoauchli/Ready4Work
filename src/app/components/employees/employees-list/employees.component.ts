@@ -19,12 +19,8 @@ import {DialogAddNewEmployeeComponent} from "./dialog-add-new-employee/dialog-ad
 
 @Component({
   selector: 'app-employees-list',
-  standalone: true,
   imports: [
-    MatList,
-    MatListSubheaderCssMatStyler,
     MatActionList,
-    JsonPipe,
     MatListItem,
     MatIcon,
     MatListItemIcon,
@@ -36,6 +32,7 @@ import {DialogAddNewEmployeeComponent} from "./dialog-add-new-employee/dialog-ad
     NgClass
   ],
   templateUrl: './employees.component.html',
+  standalone: true,
   styleUrl: './employees.component.scss'
 })
 export class EmployeesComponent implements OnInit {

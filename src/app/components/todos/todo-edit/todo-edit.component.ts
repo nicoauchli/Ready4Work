@@ -15,24 +15,23 @@ import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} fr
 import { TYPE } from '../../../enums/Type';
 
 @Component({
-  selector: 'app-todo-edit',
-  standalone: true,
-  imports: [
-    CdkTextareaAutosize,
-    MatButton,
-    MatDivider,
-    MatFormField,
-    MatIcon,
-    MatIconButton,
-    MatInput,
-    MatLabel,
-    MatOption,
-    MatSelect,
-    NgForOf,
-    ReactiveFormsModule
-  ],
-  templateUrl: './todo-edit.component.html',
-  styleUrl: './todo-edit.component.scss'
+    selector: 'app-todo-edit',
+    imports: [
+        CdkTextareaAutosize,
+        MatButton,
+        MatDivider,
+        MatFormField,
+        MatIcon,
+        MatIconButton,
+        MatInput,
+        MatLabel,
+        MatOption,
+        MatSelect,
+        NgForOf,
+        ReactiveFormsModule
+    ],
+    templateUrl: './todo-edit.component.html',
+    styleUrl: './todo-edit.component.scss'
 })
 export class TodoEditComponent implements OnInit {
 
